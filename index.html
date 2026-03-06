@@ -28,6 +28,8 @@
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet"> -->
+  <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"> -->
 
   <!-- Swiper -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
@@ -68,6 +70,122 @@
     .swiper-wrapper {
       transition-timing-function: linear !important;
     }
+    
+    .contact-main-wrapper{
+      display:flex;
+      gap:30px;
+      align-items:stretch;
+    }
+
+    .map-wrapper{
+      flex:1;
+      min-height:300px;
+    }
+
+    .contact-content{
+      flex:1;
+      display:flex;
+      flex-direction:column;
+      gap:30px;
+    }
+
+    .contact-cards-container{
+      display:grid;
+      grid-template-columns:repeat(2,1fr);
+      gap:20px;
+    }
+
+    .contact-card{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      padding:15px;
+      background:#f7f7f7;
+      border-radius:8px;
+    }
+
+    .contact-card h5{
+      margin:0;
+      font-size:16px;
+      font-weight:600;
+    }
+
+    .contact-card p{
+      margin:0;
+      font-size:14px;
+      color:#555;
+    }
+
+    .icon-box{
+      width:40px;
+      height:40px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      background:#f6eff0;
+      color:#b6373e;
+      font-size:18px;
+      border-radius:8px;
+      flex-shrink:0;
+    }
+
+    
+
+    .contact-form-container{
+      background:#fff;
+      padding:30px;
+      border-radius:10px;
+      box-shadow:0 0 10px rgba(0,0,0,0.05);
+    }
+
+    .form-submit{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      margin-top:20px;
+    }
+
+    .form-submit button{
+      background:#198754;
+      color:#fff;
+      border:none;
+      padding:12px 25px;
+      border-radius:30px;
+    }
+
+    .social-links a{
+      margin-left:10px;
+      color:#333;
+      font-size:18px;
+    }
+
+
+    /* Responsive */
+    @media (max-width: 768px){
+
+    .contact-main-wrapper{
+      flex-direction:column;
+    }
+
+    .map-wrapper{
+    height:300px;
+    margin-bottom:1px;
+    }
+
+    .contact-cards-container{
+      grid-template-columns:1fr;
+    }
+
+    /* .contact-cards-container{
+      grid-template-columns:1fr;
+    }
+
+    .map-wrapper{
+      height:400px;
+    } */
+
+    }
+
   </style>
 
 </head>
@@ -721,17 +839,120 @@
 
     </section><!-- /Testimonials Section -->
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section light-background">
+
+
+
+<section id="contact" class="contact section">
       <!-- Section Title -->
-      <div class="container section-title" data-aos="fade-up">
+      <div class="container section-title">
+        <h2>Contact</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div><!-- End Section Title -->
+
+      <div class="container">
+        <div class="contact-main-wrapper">
+          <div class="map-wrapper">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3972.7762979645395!2d-4.0049594!3d5.2975656!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xfc1e95f6285b6ad%3A0x3c348a18c70880a6!2sCONTROL%20PARKS%20CI!5e0!3m2!1sfr!2sci!4v1772824438941!5m2!1sfr!2sci" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          </div>
+
+          <div class="contact-content">
+            <div class="contact-cards-container">
+              <div class="contact-card">
+                <div class="icon-box">
+                  <i class="bi bi-geo-alt"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Localisation</h4>
+                  <p>7XXW+22 Abidjan</p>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="icon-box">
+                  <i class="bi bi-envelope"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Email</h4>
+                  <p>info@controlparks.com</p>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="icon-box">
+                  <i class="bi bi-telephone"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Téléphone</h4>
+                  <p>+225 2721259730</p>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="icon-box">
+                  <i class="bi bi-clock"></i>
+                </div>
+                <div class="contact-text">
+                  <h4>Horaires</h4>
+                  <p>Lundi-Vendredi: 9h - 17h</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="contact-form-container">
+              <h3>Nous contacter</h3>
+              <p>Lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut labore et dolore magna aliqua consectetur adipiscing.</p>
+
+              <form action="forms/contact.php" method="post" class="php-email-form">
+                <div class="row">
+                  <div class="col-md-6 form-group">
+                    <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required="">
+                  </div>
+                  <div class="col-md-6 form-group mt-3 mt-md-0">
+                    <input type="email" class="form-control" name="email" id="email" placeholder="Your Email" required="">
+                  </div>
+                </div>
+                <div class="form-group mt-3">
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Subject" required="">
+                </div>
+                <div class="form-group mt-3">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required=""></textarea>
+                </div>
+
+                <div class="my-3">
+                  <div class="loading">Loading</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Your message has been sent. Thank you!</div>
+                </div>
+
+                <div class="form-submit">
+                  <button type="submit">Envoyer le Message</button>
+                  <div class="social-links">
+                    <a href="#"><i class="bi bi-twitter"></i></a>
+                    <a href="#"><i class="bi bi-facebook"></i></a>
+                    <a href="#"><i class="bi bi-instagram"></i></a>
+                    <a href="#"><i class="bi bi-linkedin"></i></a>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <!-- Contact Section -->
+    <!-- <section id="contact" class="contact section light-background"> -->
+      <!-- Section Title -->
+      <!-- <div class="container section-title" data-aos="fade-up">
         <span class="subtitle">Contact</span>
         <h2>Let's Connect</h2>
         <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit. Sed ut perspiciatis unde
           omnis iste natus error sit voluptatem accusantium doloremque laudantium totam rem aperiam</p>
-      </div><!-- End Section Title -->
+      </div> -->
+      <!-- End Section Title -->
 
-      <div class="container">
+      <!-- <div class="container">
         <div class="row gy-4">
           <div class="col-lg-5">
 
@@ -834,7 +1055,8 @@
         </div>
       </div>
 
-    </section><!-- /Contact Section -->
+    </section> -->
+    <!-- /Contact Section -->
 
   </main>
 
