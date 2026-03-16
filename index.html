@@ -25,7 +25,7 @@
   <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
   <link href="assets/vendor/aos/aos.css" rel="stylesheet">
   <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
-  <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+  <!-- <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet"> -->
 
   <!-- Main CSS File -->
   <link href="assets/css/main.css" rel="stylesheet">
@@ -173,6 +173,331 @@
         grid-template-columns: 1fr;
       }
 
+    }
+    
+    /* ===== CUSTOM STYLE ===== */
+
+    .project-tabs {
+      border-bottom: 1px solid #eee;
+      
+      display: flex;
+      /* justify-content: center; */
+      padding-left: 8%;
+      flex-wrap: wrap;
+    }
+
+    .project-tabs .nav-link {
+      color: #6c757d;
+      font-weight: 500;
+      padding: 12px 18px;
+      border: none;
+      position: relative;
+    }
+
+    .project-tabs .nav-link:hover {
+      color: #b6373e;
+    }
+
+    .project-tabs .nav-link.active {
+      color: #b6373e;
+      background: none;
+    }
+
+    /* Ligne orange sous l’onglet actif */
+    .project-tabs .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #b6373e;
+      border-radius: 2px;
+    }
+
+    .tab-content {
+      padding-top: 20px;
+
+      display: flex;
+      /* justify-content: center; */
+      flex-wrap: wrap;
+      padding-left: 8%;
+    }
+
+    /* @@@@@@@@@@@@@@@@@@@@@ Section feature @@@@@@@@@@@@@@@@@@@@@@ */
+
+
+    /* ─────────────────────────────────────────
+       FEATURES SECTION
+    ───────────────────────────────────────── */
+    .features.section {
+      padding: 80px 0;
+    }
+
+    /* ─────────────────────────────────────────
+       SIDEBAR NAV (colonne gauche)
+    ───────────────────────────────────────── */
+    .sidebar-nav {
+      background: #fff;
+    }
+
+    .sidebar-nav .nav-pills {
+      gap: 6px;
+    }
+
+    .sidebar-nav .nav-item {
+      width: 100%;
+    }
+
+    .sidebar-nav .nav-link {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      padding: 16px 18px;
+      border-radius: 10px;
+      border: 1.5px solid #e9ecef;
+      color: #212529;
+      background: #fff;
+      transition: all .25s ease;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .sidebar-nav .nav-link:hover {
+      border-color: #c9d0ff;
+      background: #f5f6ff;
+    }
+
+    .sidebar-nav .nav-link.active,
+    .sidebar-nav .nav-link.show.active {
+      background: #f3f4f6;
+      border-color: #d1d5db;
+      color: #1a1a2e;
+    }
+
+    /* Icône dans le nav */
+    .sidebar-nav .nav-link i {
+      font-size: 1.4rem;
+      color: #6c757d;
+      flex-shrink: 0;
+      transition: color .25s;
+    }
+    .sidebar-nav .nav-link.active i,
+    .sidebar-nav .nav-link:hover i {
+      color: #4154f1;
+    }
+
+    /* Texte dans le nav */
+    .sidebar-nav .link-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .sidebar-nav .link-title {
+      font-weight: 700;
+      font-size: .95rem;
+      line-height: 1.2;
+    }
+    .sidebar-nav .link-desc {
+      font-size: .78rem;
+      color: #9ca3af;
+      font-weight: 400;
+    }
+    .sidebar-nav .nav-link.active .link-desc {
+      color: #6b7280;
+    }
+
+    /* ─────────────────────────────────────────
+       PANEL CARD (colonne droite — tab content)
+    ───────────────────────────────────────── */
+    .panel-card {
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid #e9ecef;
+      background: #fff;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, .06);
+    }
+
+    /* ── IMAGE à gauche du panel ── */
+    .panel-image {
+      height: 100%;
+      min-height: 380px;
+      overflow: hidden;
+    }
+    .panel-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── BODY à droite du panel ── */
+    .panel-body {
+      padding: 40px 36px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      height: 100%;
+    }
+
+    /* Badge */
+    .panel-badge {
+      display: inline-block;
+      padding: 5px 14px;
+      border: 1px solid #d1d5db;
+      border-radius: 50px;
+      font-size: .75rem;
+      font-weight: 600;
+      color: #374151;
+      background: #f9fafb;
+      margin-bottom: 16px;
+      letter-spacing: .02em;
+    }
+
+    /* Titre */
+    .panel-body h3 {
+      font-size: 1.6rem;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+
+    /* Paragraphe */
+    .panel-body p {
+      font-size: .88rem;
+      color: #6b7280;
+      line-height: 1.75;
+      margin-bottom: 18px;
+    }
+
+    /* Check list */
+    .check-list {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 22px 0;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .check-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: .87rem;
+      color: #374151;
+    }
+    .check-list li i {
+      color: #111827;
+      font-weight: 900;
+      font-size: .9rem;
+      margin-top: 1px;
+      flex-shrink: 0;
+    }
+
+    /* Metrics row */
+    .metric-row {
+      display: flex;
+      gap: 24px;
+      margin-bottom: 24px;
+    }
+    .metric {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+    .metric strong {
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: #111827;
+      line-height: 1;
+    }
+    .metric span {
+      font-size: .68rem;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: #9ca3af;
+    }
+
+    /* Bouton action */
+    .action-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 13px 26px;
+      background: #111827;
+      color: #fff;
+      border-radius: 8px;
+      font-size: .88rem;
+      font-weight: 600;
+      text-decoration: none;
+      transition: background .2s, transform .2s;
+      align-self: flex-start;
+    }
+    .action-btn:hover {
+      background: #374151;
+      color: #fff;
+      transform: translateY(-2px);
+    }
+    .action-btn i {
+      font-size: .9rem;
+    }
+
+    /* ─────────────────────────────────────────
+       TAB TRANSITION (fade)
+    ───────────────────────────────────────── */
+    .tab-content > .tab-pane {
+      display: none;
+    }
+    .tab-content > .tab-pane.active {
+      display: block;
+      animation: fadeInUp .35s ease forwards;
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(16px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ─────────────────────────────────────────
+       RESPONSIVE
+    ───────────────────────────────────────── */
+    @media (max-width: 991px) {
+      .sidebar-nav .nav-pills {
+        flex-direction: row !important;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+      .sidebar-nav .nav-item {
+        width: auto;
+        flex: 1;
+        min-width: 140px;
+      }
+      .sidebar-nav .nav-link {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 6px;
+        padding: 12px 14px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      .panel-image {
+        min-height: 240px;
+      }
+      .panel-body {
+        padding: 28px 24px;
+      }
+      .panel-body h3 {
+        font-size: 1.3rem;
+      }
+      .metric strong {
+        font-size: 1.2rem;
+      }
+      .metric-row {
+        gap: 16px;
+      }
     }
   </style>
 
@@ -644,6 +969,204 @@
       </div>
 
     </section><!-- /Portfolio Section -->
+
+    <!-- Teams -->
+    <section id="team" class="Teams">
+
+      <!-- Section Title -->
+      <!-- <div class="container section-title aos-init aos-animate" data-aos="fade-up">
+        <h2>Features</h2>
+        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+      </div> -->
+      <!-- End Section Title -->
+
+      <div class="container aos-init aos-animate">
+
+        <div class="row g-4">
+
+          <!-- GAUCHE : NAV TABS -->
+          <div class="col-lg-3" data-aos="fade-left" data-aos-delay="100">
+            <div class="sidebar-nav">
+              <ul class="nav nav-pills flex-column" role="tablist">
+
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link show active" data-bs-toggle="tab" data-bs-target="#features-tab-1" role="tab">
+                    <i class="bi bi-rocket-takeoff"></i>
+                    <div class="link-text">
+                      <span class="link-title">Breakthrough</span>
+                      <span class="link-desc">Next-gen solutions</span>
+                    </div>
+                  </a>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2" role="tab">
+                    <i class="bi bi-shield-shaded"></i>
+                    <div class="link-text">
+                      <span class="link-title">Protection</span>
+                      <span class="link-desc">Robust safeguards</span>
+                    </div>
+                  </a>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3" role="tab">
+                    <i class="bi bi-lightning-charge"></i>
+                    <div class="link-text">
+                      <span class="link-title">Velocity</span>
+                      <span class="link-desc">Blazing fast delivery</span>
+                    </div>
+                  </a>
+                </li>
+
+                <li class="nav-item" role="presentation">
+                  <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4" role="tab">
+                    <i class="bi bi-heart-pulse"></i>
+                    <div class="link-text">
+                      <span class="link-title">Assistance</span>
+                      <span class="link-desc">Round-the-clock help</span>
+                    </div>
+                  </a>
+                </li>
+
+              </ul>
+            </div>
+          </div>
+
+          <!-- DROITE : TAB CONTENT -->
+          <div class="col-lg-9" data-aos="fade-up"  data-aos-delay="200">
+            <div class="tab-content">
+
+              <div class="tab-pane fade active show" id="features-tab-1" role="tabpanel">
+                <div class="panel-card">
+                  <div class="row g-0">
+                    <div class="col-md-6">
+                      <div class="panel-image">
+                        <!-- Remplace src par ton image -->
+                        <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=600&q=80" alt="Breakthrough"/>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="panel-body">
+                        <span class="panel-badge">Breakthrough</span>
+                        <h3>Pioneering Digital Craft</h3>
+                        <p>Quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi laboriosam.</p>
+                        <ul class="check-list">
+                          <li><i class="bi bi-check"></i> Temporibus autem quibusdam rerum necessitatibus</li>
+                          <li><i class="bi bi-check"></i> Itaque earum rerum hic tenetur sapiente</li>
+                          <li><i class="bi bi-check"></i> Nemo enim ipsam voluptatem quia aspernatur</li>
+                        </ul>
+                        <div class="metric-row">
+                          <div class="metric"><strong>97%</strong><span>Reliability</span></div>
+                          <div class="metric"><strong>40K+</strong><span>Clients</span></div>
+                          <div class="metric"><strong>365</strong><span>Days Active</span></div>
+                        </div>
+                        <a href="#" class="action-btn">Explore Further <i class="bi bi-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="features-tab-2" role="tabpanel">
+                <div class="panel-card">
+                  <div class="row g-0">
+                    <div class="col-md-6">
+                      <div class="panel-image">
+                        <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=600&q=80" alt="Protection"/>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="panel-body">
+                        <span class="panel-badge">Protection</span>
+                        <h3>Enterprise-Grade Defense</h3>
+                        <p>Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam nisi ut aliquid commodi consequatur.</p>
+                        <ul class="check-list">
+                          <li><i class="bi bi-check"></i> Duis aute irure dolor in reprehenderit voluptate</li>
+                          <li><i class="bi bi-check"></i> Sunt in culpa qui officia deserunt mollit</li>
+                          <li><i class="bi bi-check"></i> At vero eos et accusamus iusto dignissimos</li>
+                        </ul>
+                        <div class="metric-row">
+                          <div class="metric"><strong>512-bit</strong><span>Encryption</span></div>
+                          <div class="metric"><strong>SOC2</strong><span>Verified</span></div>
+                          <div class="metric"><strong>HIPAA</strong><span>Ready</span></div>
+                        </div>
+                        <a href="#" class="action-btn">Explore Further <i class="bi bi-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="features-tab-3" role="tabpanel">
+                <div class="panel-card">
+                  <div class="row g-0">
+                    <div class="col-md-6">
+                      <div class="panel-image">
+                        <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=600&q=80" alt="Velocity"/>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="panel-body">
+                        <span class="panel-badge">Velocity</span>
+                        <h3>Optimized For Speed</h3>
+                        <p>Nam libero tempore cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus.</p>
+                        <ul class="check-list">
+                          <li><i class="bi bi-check"></i> Excepteur sint occaecat cupidatat non proident</li>
+                          <li><i class="bi bi-check"></i> Neque porro quisquam est qui dolorem ipsum</li>
+                          <li><i class="bi bi-check"></i> Sed quia consequuntur magni dolores ratione</li>
+                        </ul>
+                        <div class="metric-row">
+                          <div class="metric"><strong>0.3s</strong><span>Latency</span></div>
+                          <div class="metric"><strong>99.9%</strong><span>Tuned</span></div>
+                          <div class="metric"><strong>Edge</strong><span>Network</span></div>
+                        </div>
+                        <a href="#" class="action-btn">Explore Further <i class="bi bi-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="tab-pane fade" id="features-tab-4" role="tabpanel">
+                <div class="panel-card">
+                  <div class="row g-0">
+                    <div class="col-md-6">
+                      <div class="panel-image">
+                        <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?w=600&q=80" alt="Assistance"/>
+                      </div>
+                    </div>
+                    <div class="col-md-6">
+                      <div class="panel-body">
+                        <span class="panel-badge">Assistance</span>
+                        <h3>Dedicated Care Team</h3>
+                        <p>Quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt.</p>
+                        <ul class="check-list">
+                          <li><i class="bi bi-check"></i> Quis autem vel eum iure reprehenderit voluptate</li>
+                          <li><i class="bi bi-check"></i> Temporibus autem quibusdam et aut officiis</li>
+                          <li><i class="bi bi-check"></i> Sed ut perspiciatis unde omnis iste natus</li>
+                        </ul>
+                        <div class="metric-row">
+                          <div class="metric"><strong>24/7</strong><span>On Call</span></div>
+                          <div class="metric"><strong>3min</strong><span>Reply</span></div>
+                          <div class="metric"><strong>Senior</strong><span>Engineers</span></div>
+                        </div>
+                        <a href="#" class="action-btn">Explore Further <i class="bi bi-arrow-right"></i></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+
+    </section>
+
 
 
     <!-- Testimonials Section -->

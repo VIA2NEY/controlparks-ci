@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Bootstrap 5.3.8 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <title>Project Tabs</title>
+
+  <style>
+    /* ===== CUSTOM STYLE ===== */
+
+    .project-tabs {
+      border-bottom: 1px solid #eee;
+    }
+
+    .project-tabs .nav-link {
+      color: #6c757d;
+      font-weight: 500;
+      padding: 12px 18px;
+      border: none;
+      position: relative;
+    }
+
+    .project-tabs .nav-link:hover {
+      color: #ff6b2c;
+    }
+
+    .project-tabs .nav-link.active {
+      color: #ff6b2c;
+      background: none;
+    }
+
+    /* Ligne orange sous l’onglet actif */
+    .project-tabs .nav-link.active::after {
+      content: "";
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #ff6b2c;
+      border-radius: 2px;
+    }
+
+    .tab-content {
+      padding-top: 20px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="container mt-5">
+
+  <!-- NAV TABS -->
+  <ul class="nav project-tabs" id="projectTab" role="tablist">
+    
+    <li class="nav-item" role="presentation">
+      <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#overview">
+        🔶 Overview
+      </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#obstacles">
+        ⚠️ Obstacles
+      </button>
+    </li>
+
+    <li class="nav-item" role="presentation">
+      <button class="nav-link" data-bs-toggle="tab" data-bs-target="#methodology">
+        ⚙️ Methodology
+      </button>
+    </li>
+
+  </ul>
+
+  <!-- CONTENT -->
+  <div class="tab-content">
+
+    <div class="tab-pane fade show active" id="overview">
+      <h4>Overview</h4>
+      <p>
+        A landmark commercial development integrating cutting-edge design principles with eco-conscious construction methods.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="obstacles">
+      <h4>Obstacles</h4>
+      <p>
+        Challenges included urban density, sustainability requirements, and strict deadlines.
+      </p>
+    </div>
+
+    <div class="tab-pane fade" id="methodology">
+      <h4>Methodology</h4>
+      <p>
+        Agile construction process with smart building integration and phased delivery.
+      </p>
+    </div>
+
+  </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
