@@ -174,154 +174,145 @@
       }
 
     }
-    
+    /* 666666666666666666666666666666666666666666666666666666666666666666 */
     /* ===== CUSTOM STYLE ===== */
 
-    .project-tabs {
-      border-bottom: 1px solid #eee;
-      
-      display: flex;
-      /* justify-content: center; */
-      padding-left: 8%;
-      flex-wrap: wrap;
+    /* .features.section {
+      padding: 80px 0 100px;
     }
 
-    .project-tabs .nav-link {
-      color: #6c757d;
-      font-weight: 500;
-      padding: 12px 18px;
-      border: none;
-      position: relative;
+    .section-title {
+      text-align: center;
+      padding-bottom: 55px;
     }
-
-    .project-tabs .nav-link:hover {
-      color: #b6373e;
+    .section-title h2 {
+      font-size: 2rem;
+      font-weight: 800;
+      color: #1a1a2e;
+      display: inline-block;
+      margin-bottom: 12px;
     }
-
-    .project-tabs .nav-link.active {
-      color: #b6373e;
-      background: none;
-    }
-
-    /* Ligne orange sous l’onglet actif */
-    .project-tabs .nav-link.active::after {
-      content: "";
-      position: absolute;
-      bottom: -1px;
-      left: 0;
-      width: 100%;
+    .section-title h2::after {
+      content: '';
+      display: block;
+      width: 48px;
       height: 3px;
-      background: #b6373e;
+      background: #4154f1;
       border-radius: 2px;
+      margin: 10px auto 0;
     }
+    .section-title p {
+      color: #6c757d;
+      font-size: .97rem;
+      max-width: 580px;
+      margin: 0 auto;
+    } */
 
-    .tab-content {
-      padding-top: 20px;
-
+    /* ─────────────────────────────────────────
+       LAYOUT PRINCIPAL
+       align-items: flex-start est OBLIGATOIRE
+       pour que position:sticky fonctionne
+    ───────────────────────────────────────── */
+    .features-row {
       display: flex;
-      /* justify-content: center; */
-      flex-wrap: wrap;
-      padding-left: 8%;
-    }
-
-    /* @@@@@@@@@@@@@@@@@@@@@ Section feature @@@@@@@@@@@@@@@@@@@@@@ */
-
-
-    /* ─────────────────────────────────────────
-       FEATURES SECTION
-    ───────────────────────────────────────── */
-    .features.section {
-      padding: 80px 0;
+      align-items: flex-start;
+      gap: 24px;
     }
 
     /* ─────────────────────────────────────────
-       SIDEBAR NAV (colonne gauche)
+       COLONNE GAUCHE — STICKY
     ───────────────────────────────────────── */
+    .sidebar-col {
+      width: 272px;
+      flex-shrink: 0;
+      position: sticky;
+      top: 24px;            /* colle à 24px du haut de la fenêtre */
+      align-self: flex-start;
+    }
+
     .sidebar-nav {
       background: #fff;
+      border-radius: 14px;
+      border: 1px solid #e9ecef;
+      padding: 10px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.04);
     }
 
     .sidebar-nav .nav-pills {
-      gap: 6px;
-    }
-
-    .sidebar-nav .nav-item {
-      width: 100%;
+      gap: 4px;
+      flex-direction: column;
     }
 
     .sidebar-nav .nav-link {
       display: flex;
       align-items: center;
       gap: 14px;
-      padding: 16px 18px;
+      padding: 14px 16px;
       border-radius: 10px;
-      border: 1.5px solid #e9ecef;
-      color: #212529;
-      background: #fff;
-      transition: all .25s ease;
+      border: 1.5px solid transparent;
+      color: #374151;
+      background: transparent;
+      transition: all .22s ease;
       text-decoration: none;
       cursor: pointer;
+      width: 100%;
     }
-
     .sidebar-nav .nav-link:hover {
-      border-color: #c9d0ff;
       background: #f5f6ff;
+      border-color: #d0d5ff;
     }
-
-    .sidebar-nav .nav-link.active,
-    .sidebar-nav .nav-link.show.active {
+    .sidebar-nav .nav-link.active {
       background: #f3f4f6;
       border-color: #d1d5db;
-      color: #1a1a2e;
+      color: #111827;
     }
-
-    /* Icône dans le nav */
     .sidebar-nav .nav-link i {
-      font-size: 1.4rem;
-      color: #6c757d;
+      font-size: 1.35rem;
+      color: #9ca3af;
       flex-shrink: 0;
-      transition: color .25s;
+      transition: color .22s;
     }
-    .sidebar-nav .nav-link.active i,
-    .sidebar-nav .nav-link:hover i {
+    .sidebar-nav .nav-link:hover i,
+    .sidebar-nav .nav-link.active i {
       color: #4154f1;
     }
-
-    /* Texte dans le nav */
-    .sidebar-nav .link-text {
+    .link-text {
       display: flex;
       flex-direction: column;
       gap: 2px;
     }
-    .sidebar-nav .link-title {
+    .link-title {
       font-weight: 700;
-      font-size: .95rem;
-      line-height: 1.2;
+      font-size: .92rem;
     }
-    .sidebar-nav .link-desc {
-      font-size: .78rem;
+    .link-desc {
+      font-size: .76rem;
       color: #9ca3af;
-      font-weight: 400;
     }
-    .sidebar-nav .nav-link.active .link-desc {
-      color: #6b7280;
+    .sidebar-nav .nav-link.active .link-desc { color: #6b7280; }
+
+    /* ─────────────────────────────────────────
+       COLONNE DROITE
+    ───────────────────────────────────────── */
+    .content-col {
+      flex: 1;
+      min-width: 0;
     }
 
     /* ─────────────────────────────────────────
-       PANEL CARD (colonne droite — tab content)
+       PANEL CARD
     ───────────────────────────────────────── */
     .panel-card {
       border-radius: 16px;
       overflow: hidden;
       border: 1px solid #e9ecef;
       background: #fff;
-      box-shadow: 0 4px 30px rgba(0, 0, 0, .06);
+      box-shadow: 0 4px 30px rgba(0,0,0,.06);
     }
 
-    /* ── IMAGE à gauche du panel ── */
     .panel-image {
       height: 100%;
-      min-height: 380px;
+      min-height: 400px;
       overflow: hidden;
     }
     .panel-image img {
@@ -331,7 +322,6 @@
       display: block;
     }
 
-    /* ── BODY à droite du panel ── */
     .panel-body {
       padding: 40px 36px;
       display: flex;
@@ -340,42 +330,36 @@
       height: 100%;
     }
 
-    /* Badge */
     .panel-badge {
       display: inline-block;
       padding: 5px 14px;
       border: 1px solid #d1d5db;
       border-radius: 50px;
-      font-size: .75rem;
+      font-size: .73rem;
       font-weight: 600;
       color: #374151;
       background: #f9fafb;
       margin-bottom: 16px;
-      letter-spacing: .02em;
     }
 
-    /* Titre */
     .panel-body h3 {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 800;
       color: #111827;
       line-height: 1.2;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
-
-    /* Paragraphe */
-    .panel-body p {
-      font-size: .88rem;
+    .panel-body > p {
+      font-size: .87rem;
       color: #6b7280;
       line-height: 1.75;
       margin-bottom: 18px;
     }
 
-    /* Check list */
     .check-list {
       list-style: none;
       padding: 0;
-      margin: 0 0 22px 0;
+      margin: 0 0 20px 0;
       display: flex;
       flex-direction: column;
       gap: 8px;
@@ -384,52 +368,45 @@
       display: flex;
       align-items: flex-start;
       gap: 8px;
-      font-size: .87rem;
+      font-size: .86rem;
       color: #374151;
     }
     .check-list li i {
       color: #111827;
-      font-weight: 900;
-      font-size: .9rem;
+      font-size: .88rem;
       margin-top: 1px;
       flex-shrink: 0;
     }
 
-    /* Metrics row */
     .metric-row {
       display: flex;
       gap: 24px;
-      margin-bottom: 24px;
+      margin-bottom: 22px;
     }
-    .metric {
-      display: flex;
-      flex-direction: column;
-      gap: 2px;
-    }
+    .metric { display: flex; flex-direction: column; gap: 2px; }
     .metric strong {
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       font-weight: 800;
       color: #111827;
       line-height: 1;
     }
     .metric span {
-      font-size: .68rem;
+      font-size: .67rem;
       font-weight: 600;
       text-transform: uppercase;
       letter-spacing: .08em;
       color: #9ca3af;
     }
 
-    /* Bouton action */
     .action-btn {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      padding: 13px 26px;
+      padding: 12px 24px;
       background: #111827;
       color: #fff;
       border-radius: 8px;
-      font-size: .88rem;
+      font-size: .87rem;
       font-weight: 600;
       text-decoration: none;
       transition: background .2s, transform .2s;
@@ -440,65 +417,130 @@
       color: #fff;
       transform: translateY(-2px);
     }
-    .action-btn i {
-      font-size: .9rem;
+
+    /* ─────────────────────────────────────────
+       TAB ANIMATION
+    ───────────────────────────────────────── */
+    .tab-content > .tab-pane { display: none; }
+    .tab-content > .tab-pane.active.show {
+      display: block;
+      animation: fadeUp .32s ease forwards;
+    }
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(14px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
 
     /* ─────────────────────────────────────────
-       TAB TRANSITION (fade)
+       BOUTONS CTA EN BAS
     ───────────────────────────────────────── */
-    .tab-content > .tab-pane {
-      display: none;
-    }
-    .tab-content > .tab-pane.active {
-      display: block;
-      animation: fadeInUp .35s ease forwards;
+    .cta-buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
     }
 
-    @keyframes fadeInUp {
-      from { opacity: 0; transform: translateY(16px); }
-      to   { opacity: 1; transform: translateY(0); }
+    .cta-btn {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      padding: 22px 26px;
+      border-radius: 14px;
+      text-decoration: none;
+      border: 1.5px solid transparent;
+      transition: all .25s ease;
+    }
+
+    /* Bouton Entreprises — fond sombre */
+    .cta-btn.entreprises {
+      background: #111827;
+      border-color: #111827;
+      color: #fff;
+    }
+    .cta-btn.entreprises:hover {
+      background: #1f2937;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(17,24,39,.2);
+      color: #fff;
+    }
+
+    /* Bouton Particuliers — fond blanc */
+    .cta-btn.particuliers {
+      background: #fff;
+      border-color: #d1d5db;
+      color: #111827;
+    }
+    .cta-btn.particuliers:hover {
+      border-color: #4154f1;
+      background: #f5f6ff;
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(65,84,241,.1);
+      color: #111827;
+    }
+
+    .cta-btn-left {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+    }
+    .cta-btn-icon {
+      font-size: 1.4rem;
+      margin-bottom: 4px;
+      display: block;
+    }
+    .cta-btn-title {
+      font-size: .98rem;
+      font-weight: 700;
+      line-height: 1.2;
+      display: block;
+    }
+    .cta-btn-sub {
+      font-size: .76rem;
+      opacity: .6;
+      display: block;
+    }
+    .cta-btn-arrow {
+      font-size: 1.3rem;
+      opacity: .45;
+      flex-shrink: 0;
+      transition: transform .25s, opacity .25s;
+    }
+    .cta-btn:hover .cta-btn-arrow {
+      transform: translateX(5px);
+      opacity: 1;
     }
 
     /* ─────────────────────────────────────────
        RESPONSIVE
     ───────────────────────────────────────── */
     @media (max-width: 991px) {
+      .features-row { flex-direction: column; }
+      .sidebar-col {
+        width: 100%;
+        position: static;   /* sticky désactivé sur mobile */
+      }
       .sidebar-nav .nav-pills {
         flex-direction: row !important;
         flex-wrap: wrap;
-        gap: 8px;
-      }
-      .sidebar-nav .nav-item {
-        width: auto;
-        flex: 1;
-        min-width: 140px;
+        gap: 6px;
       }
       .sidebar-nav .nav-link {
         flex-direction: column;
         align-items: flex-start;
-        gap: 6px;
-        padding: 12px 14px;
+        flex: 1;
+        min-width: 130px;
+        padding: 10px 12px;
       }
     }
-
     @media (max-width: 767px) {
-      .panel-image {
-        min-height: 240px;
-      }
-      .panel-body {
-        padding: 28px 24px;
-      }
-      .panel-body h3 {
-        font-size: 1.3rem;
-      }
-      .metric strong {
-        font-size: 1.2rem;
-      }
-      .metric-row {
-        gap: 16px;
-      }
+      .panel-image { min-height: 220px; }
+      .panel-body { padding: 24px 20px; }
+      .panel-body h3 { font-size: 1.2rem; }
+      .cta-buttons { flex-direction: column; }
     }
+    /* 666666666666666666666666666666666666666666666666666666666666666666 */
   </style>
 
 </head>
@@ -971,7 +1013,7 @@
     </section><!-- /Portfolio Section -->
 
     <!-- Teams -->
-    <section id="team" class="Teams">
+    <section id="features" class="features section">
 
       <!-- Section Title -->
       <!-- <div class="container section-title aos-init aos-animate" data-aos="fade-up">
@@ -980,17 +1022,16 @@
       </div> -->
       <!-- End Section Title -->
 
-      <div class="container aos-init aos-animate">
+      <div class="container">
+        <div class="features-row">
 
-        <div class="row g-4">
-
-          <!-- GAUCHE : NAV TABS -->
-          <div class="col-lg-3" data-aos="fade-left" data-aos-delay="100">
+          <!-- ── GAUCHE : sticky ── -->
+          <div class="sidebar-col" data-aos="fade-left" data-aos-delay="100">
             <div class="sidebar-nav">
               <ul class="nav nav-pills flex-column" role="tablist">
 
                 <li class="nav-item" role="presentation">
-                  <a class="nav-link show active" data-bs-toggle="tab" data-bs-target="#features-tab-1" role="tab">
+                  <a class="nav-link active" data-bs-toggle="tab" data-bs-target="#features-tab-1" role="tab">
                     <i class="bi bi-rocket-takeoff"></i>
                     <div class="link-text">
                       <span class="link-title">Breakthrough</span>
@@ -1033,8 +1074,9 @@
             </div>
           </div>
 
-          <!-- DROITE : TAB CONTENT -->
-          <div class="col-lg-9" data-aos="fade-up"  data-aos-delay="200">
+          <!-- ── DROITE : contenu + boutons ── -->
+          <div class="content-col"  data-aos="fade-up"  data-aos-delay="200">
+
             <div class="tab-content">
 
               <div class="tab-pane fade active show" id="features-tab-1" role="tabpanel">
@@ -1158,13 +1200,35 @@
                 </div>
               </div>
 
+            </div><!-- fin tab-content -->
+
+            <!-- ✅ BOUTONS CTA -->
+            <div class="cta-buttons">
+
+              <a href="offres-entreprises.html" class="cta-btn entreprises">
+                <div class="cta-btn-left">
+                  <i class="bi bi-buildings cta-btn-icon"></i>
+                  <span class="cta-btn-title">Offres Entreprises</span>
+                  <span class="cta-btn-sub">Solutions sur-mesure pour les pros</span>
+                </div>
+                <i class="bi bi-arrow-right cta-btn-arrow"></i>
+              </a>
+
+              <a href="offres-particuliers.html" class="cta-btn particuliers">
+                <div class="cta-btn-left">
+                  <i class="bi bi-person cta-btn-icon"></i>
+                  <span class="cta-btn-title">Offres Particuliers</span>
+                  <span class="cta-btn-sub">Des forfaits adaptés à vos besoins</span>
+                </div>
+                <i class="bi bi-arrow-right cta-btn-arrow"></i>
+              </a>
+
             </div>
-          </div>
 
-        </div>
+          </div><!-- fin content-col -->
 
+        </div><!-- fin features-row -->
       </div>
-
     </section>
 
 
