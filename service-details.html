@@ -34,6 +34,115 @@
   * Author: BootstrapMade.com
   * License: https://bootstrapmade.com/license/
   ======================================================== -->
+  <style>
+    .pricing-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 15px;
+    }
+
+    .pricing-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .feature-list li {
+      margin-bottom: 0.8rem;
+      color: #6c757d;
+    }
+
+    .popular-badge {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      border-radius: 20px;
+    }
+
+    .gradient-custom {
+      background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+    }
+
+
+
+    /* --- Le Switcher Style "Image 1" --- */
+    .toggle-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        margin-bottom: 40px;
+    }
+    .toggle-wrapper {
+        position: relative;
+        padding-top: 20px; /* Espace pour le badge */
+        
+    }
+
+    .custom-switcher {
+        background: #f4f4f4;
+        border-radius: 50px;
+        display: flex;
+        padding: 4px;
+        position: relative;
+        width: fit-content;
+    }
+
+    .custom-switcher input { display: none; }
+
+    .custom-switcher label {
+        padding: 8px 25px;
+        cursor: pointer;
+        z-index: 2;
+        font-weight: 500;
+        color: #666;
+        transition: color 0.3s;
+        margin: 0;
+    }
+
+    .switch-selection {
+        position: absolute;
+        height: calc(100% - 8px);
+        width: 100px; /* Sera ajusté par JS */
+        background: #333;
+        border-radius: 40px;
+        z-index: 1;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* --- Le Badge "Save" --- */
+    .save-badge {
+        position: absolute;
+        top: -5px;
+        /* background: #c7caff; */
+        color: #fff;
+        font-size: 11px;
+        padding: 2px 8px;
+        border-radius: 5px;
+        font-weight: bold;
+        pointer-events: none;
+        transition: all 0.3s ease;
+        white-space: nowrap;
+        display: block; /* Caché par défaut */
+    }
+
+    /* --- Le Scroll Horizontal Style "Image 2" --- */
+    @media (max-width: 768px) {
+        .pricing-grid-wrapper {
+            overflow-x: auto;
+            padding-bottom: 20px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .pricing-cards-container {
+            display: flex;
+            gap: 15px;
+            width: max-content; /* Force le scroll */
+            padding: 10px;
+        }
+        .price-card {
+            width: 85vw; /* Presque toute la largeur */
+        }
+    }
+  </style>
 </head>
 
 <body class="service-details-page">
@@ -178,44 +287,6 @@
                 </div>
               </div>
 
-              <div class="service-process" data-aos="fade-up" data-aos-delay="500">
-                <h3>Our Process</h3>
-
-                <div class="process-timeline">
-                  <div class="process-step">
-                    <div class="step-number">01</div>
-                    <div class="step-content">
-                      <h4>Discovery &amp; Analysis</h4>
-                      <p>We begin with a comprehensive audit of your current digital presence and competitive landscape analysis.</p>
-                    </div>
-                  </div>
-
-                  <div class="process-step">
-                    <div class="step-number">02</div>
-                    <div class="step-content">
-                      <h4>Strategy Development</h4>
-                      <p>Based on our findings, we create a customized digital marketing strategy aligned with your business objectives.</p>
-                    </div>
-                  </div>
-
-                  <div class="process-step">
-                    <div class="step-number">03</div>
-                    <div class="step-content">
-                      <h4>Implementation</h4>
-                      <p>Our team executes the strategy across all relevant digital channels with precision and attention to detail.</p>
-                    </div>
-                  </div>
-
-                  <div class="process-step">
-                    <div class="step-number">04</div>
-                    <div class="step-content">
-                      <h4>Monitoring &amp; Optimization</h4>
-                      <p>Continuous performance tracking and data-driven optimizations to ensure maximum return on investment.</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
 
           </div>
@@ -292,6 +363,119 @@
       </div>
 
     </section><!-- /Service Details Section -->
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing-section">
+      <div class="bg-light">
+        <div class="container py-5">
+          <div class="row text-center mb-5" data-aos="fade-up" data-aos-delay="100">
+            <div class="col">
+              <h2 class="display-4 fw-bold">Choisissez votre plan</h2>
+              <p class="text-muted">Selectionnez le plan qui vous convient le mieux</p>
+            </div>
+            
+            <div class="toggle-container">
+              <div class="toggle-wrapper">
+                  <div class="custom-switcher">
+                      <input type="radio" name="plan" id="monthly" value="monthly" checked>
+                      <label for="monthly">Monthly</label>
+
+                      <input type="radio" name="plan" id="quarterly" value="quarterly">
+                      <label for="quarterly">Quarterly</label>
+
+                      <input type="radio" name="plan" id="annual" value="annual" data-save="save 20%">
+                      <label for="annual">Annual</label>
+                      
+                      <div class="switch-selection"></div>
+                  </div>
+                  <div class="save-badge gradient-custom" id="floating-badge">save 20%</div>
+              </div>
+            </div>
+
+                    
+          </div>
+          <div class="row row-cols-1 row-cols-md-3 g-4" data-aos="fade-up" data-aos-delay="200">
+            <!-- Basic Plan -->
+            <div class="col">
+              <div class="card h-100 pricing-card shadow-sm">
+                <div class="card-body p-5">
+                  <h5 class="card-title text-muted text-uppercase mb-4">Starter</h5>
+
+                  <!-- <h1 class="display-5 mb-4">$19<small class="text-muted fw-light">/mo</small></h1> -->
+                  <div class="price-section">
+                    <h1 class="display-4"><span class="val" data-m="16" data-q="40" data-a="150">16</span>Fcfa</h1>
+                    <div class="price-details">
+                        <p>/ Mois (Xof)</p>
+                        <p class="billed-info">192 Fcfa l'année</p>
+                    </div>
+                  </div>
+
+                  <ul class="list-unstyled feature-list">
+                    <li><i class="bi bi-check2 text-primary me-2"></i>5 Projects</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>10GB Storage</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Basic Support</li>
+                  </ul>
+                  <button class="btn btn-outline-primary btn-lg w-100 mt-4">Get Started</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Pro Plan -->
+            <div class="col">
+              <div class="card h-100 pricing-card shadow position-relative">
+                <span class="badge gradient-custom text-white popular-badge px-4 py-2">Popular</span>
+                <div class="card-body p-5">
+                  <h5 class="card-title text-primary text-uppercase mb-4">Professional</h5>
+                  <!-- <h1 class="display-5 mb-4">$49<small class="text-muted fw-light">/mo</small></h1> -->
+                   
+                  <div class="price-section">
+                    <h1 class="display-4"><span class="val" data-m="49" data-q="140" data-a="490">49</span> Fcfa</h1>
+                    <div class="price-details">
+                        <p>/ Mois (Xof)</p>
+                        <p class="billed-info">496 Fcfa l'année</p>
+                    </div>
+                  </div>
+
+                  <ul class="list-unstyled feature-list">
+                    <li><i class="bi bi-check2 text-primary me-2"></i>15 Projects</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>50GB Storage</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Priority Support</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Advanced Features</li>
+                  </ul>
+                  <button class="btn gradient-custom text-white btn-lg w-100 mt-4">Get Started</button>
+                </div>
+              </div>
+            </div>
+
+            <!-- Enterprise Plan -->
+            <div class="col">
+              <div class="card h-100 pricing-card shadow-sm">
+                <div class="card-body p-5">
+                  <h5 class="card-title text-muted text-uppercase mb-4">Enterprise</h5>
+                  <!-- <h1 class="display-5 mb-4">$99<small class="text-muted fw-light">/mo</small></h1> -->
+                   
+                  <div class="price-section">
+                    <h1 class="display-4"><span class="val" data-m="99" data-q="290" data-a="990"></span> Fcfa</h1>
+                    <div class="price-details">
+                        <p>/ Mois (Xof)</p>
+                        <p class="billed-info">992 Fcfa l'année</p>
+                    </div>
+                  </div>
+                  <ul class="list-unstyled feature-list">
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Unlimited Projects</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>1TB Storage</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>24/7 Support</li>
+                    <li><i class="bi bi-check2 text-primary me-2"></i>Custom Features</li>
+                  </ul>
+                  <button class="btn btn-outline-primary btn-lg w-100 mt-4">Get Started</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- /Pricing Section -->
 
   </main>
 
@@ -377,6 +561,44 @@
 
   <!-- Main JS File -->
   <script src="assets/js/main.js"></script>
+
+  <script>
+    const inputs = document.querySelectorAll('.custom-switcher input');
+    const selection = document.querySelector('.switch-selection');
+    const badge = document.getElementById('floating-badge');
+
+    function updateSwitcher() {
+        const activeInput = document.querySelector('.custom-switcher input:checked');
+        const label = document.querySelector(`label[for="${activeInput.id}"]`);
+        
+        // 1. Déplacer le fond noir
+        selection.style.width = label.offsetWidth + 'px';
+        selection.style.left = label.offsetLeft + 'px';
+        
+        // 2. Changer la couleur du texte
+        inputs.forEach(i => {
+            const l = document.querySelector(`label[for="${i.id}"]`);
+            l.style.color = (i.checked) ? "#fff" : "#666";
+        });
+
+        // 3. Positionner la pillule "Save" sur l'onglet Annual
+        const annualLabel = document.querySelector('label[for="annual"]');
+        badge.style.left = (annualLabel.offsetLeft + (annualLabel.offsetWidth / 2) - (badge.offsetWidth / 2)) + 'px';
+
+        // 4. Mettre à jour les prix
+        document.querySelectorAll('.val').forEach(priceSpan => {
+            if(activeInput.id === 'monthly') priceSpan.innerText = priceSpan.dataset.m;
+            if(activeInput.id === 'quarterly') priceSpan.innerText = priceSpan.dataset.q;
+            if(activeInput.id === 'annual') priceSpan.innerText = priceSpan.dataset.a;
+        });
+    }
+
+    inputs.forEach(input => input.addEventListener('change', updateSwitcher));
+    
+    // Initialisation au chargement et au redimensionnement
+    window.addEventListener('load', updateSwitcher);
+    window.addEventListener('resize', updateSwitcher);
+  </script>
 
 </body>
 
