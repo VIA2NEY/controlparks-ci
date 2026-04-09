@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Checkout - HP Notebook Plan</title>
+  <title>Finalisez votre commande</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
   <style>
@@ -29,129 +29,61 @@
     }
 
     .product-icon-box {
-      width: 52px;
-      height: 52px;
-      background: #f0f0f0;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 26px;
-      color: #444;
+      width: 52px; height: 52px;
+      background: #f0f0f0; border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 26px; color: #444;
     }
 
     /* --- Custom Selects --- */
-    .custom-dropdown-wrapper {
-      position: relative;
-      display: inline-block;
-      width: auto;
-    }
-
+    .custom-dropdown-wrapper { position: relative; display: inline-block; width: auto; }
     .custom-select {
-      appearance: none;
-      -webkit-appearance: none;
-      background-color: #fff;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
+      appearance: none; -webkit-appearance: none;
+      background-color: #fff; border: 2px solid #e0e0e0; border-radius: 8px;
       padding: 10px 35px 10px 15px !important;
-      font-size: 0.9rem;
-      font-weight: 500;
-      cursor: pointer;
-      color: var(--text-dark);
-      transition: all 0.2s ease;
-      width: 100%;
+      font-size: 0.9rem; font-weight: 500; cursor: pointer;
+      color: var(--text-dark); transition: all 0.2s ease; width: 100%;
     }
-
-    .custom-select:focus {
-      outline: none;
-      border-color: var(--primary-color);
-      box-shadow: 0 0 0 3px rgba(103, 61, 230, 0.1);
-    }
-
+    .custom-select:focus { outline: none; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(103, 61, 230, 0.1); }
     .custom-dropdown-wrapper::after {
-      content: '\F229';
-      font-family: 'bootstrap-icons';
-      position: absolute;
-      right: 12px;
-      top: 50%;
-      transform: translateY(-50%);
-      color: var(--text-muted);
-      pointer-events: none;
+      content: '\F229'; font-family: 'bootstrap-icons';
+      position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
+      color: var(--text-muted); pointer-events: none;
     }
 
-    /* --- Selectors Stack --- */
+    /* --- Layout --- */
     .selectors-stack { display: flex; flex-direction: column; gap: 15px; }
     .selector-group { display: flex; flex-direction: column; }
-    .selector-title {
-      font-size: 0.8rem;
-      font-weight: 700;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 5px;
-    }
-
-    .save-badge-external {
-      font-weight: 600;
-      font-size: 0.8rem;
-      padding: 6px 12px;
-      border-radius: 6px;
-      height: fit-content;
-    }
-
-    .quantity-input {
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      padding: 8px;
-      width: 100px;
-      font-weight: 600;
-    }
+    .selector-title { font-size: 0.75rem; font-weight: 700; color: var(--text-muted); text-transform: uppercase; margin-bottom: 5px; }
+    .save-badge-external { font-weight: 600; font-size: 0.8rem; padding: 6px 12px; border-radius: 6px; height: fit-content; }
+    .quantity-input { border: 2px solid #e0e0e0; border-radius: 8px; padding: 8px; width: 100px; font-weight: 600; }
 
     /* --- Add-ons --- */
-    .addon-card { transition: all 0.2s ease; }
-    .addon-card:has(.addon-checkbox:checked) {
-      border-color: var(--primary-color);
-      background-color: #f8f6ff;
-    }
-    .addon-checkbox {
-      width: 20px;
-      height: 20px;
-      margin-top: 0.25rem !important;
-      flex-shrink: 0;
-    }
+    .addon-card { transition: all 0.2s ease; cursor: pointer; }
+    .addon-card:has(.addon-checkbox:checked) { border-color: var(--primary-color); background-color: #f8f6ff; }
+    .addon-checkbox { width: 20px; height: 20px; margin-top: 0.25rem !important; flex-shrink: 0; }
 
     /* --- Payments --- */
     .payment-methods-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
     .payment-box {
-      border: 2px solid #e0e0e0;
-      border-radius: 10px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      background: #fff;
-      position: relative;
+      border: 2px solid #e0e0e0; border-radius: 10px; height: 60px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; background: #fff; position: relative;
     }
-    .payment-box img { width: 40px; height: auto; object-fit: contain; }
+    .payment-box img { width: 45px; height: auto; object-fit: contain; }
     .payment-box.active { border-color: var(--primary-color); background-color: #f8f6ff; }
     .payment-box.active::after {
-      content: '\F26B';
-      font-family: 'bootstrap-icons';
-      position: absolute;
-      top: 5px; right: 5px;
-      color: var(--primary-color);
-      font-size: 1.1rem;
+      content: '\F26B'; font-family: 'bootstrap-icons';
+      position: absolute; top: 5px; right: 5px; color: var(--primary-color); font-size: 1.1rem;
     }
 
-    /* --- Responsive Elements --- */
+    /* --- Mobile Fixes --- */
     .responsive-bottom-bar {
-      position: fixed; bottom: 0; left: 0; width: 100%; height: 70px;
-      background: #ffffff; border-top: 1px solid #e0e0e0;
-      box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.05); z-index: 1050;
+      position: fixed; bottom: 0; left: 0; width: 100%; height: 75px;
+      background: #ffffff; border-top: 1px solid #e0e0e0; z-index: 1050;
     }
-    .btn-toggle-summary { background: none; border: none; color: var(--primary-color); font-size: 1.4rem; transition: 0.3s; }
-    .overlay-open .btn-toggle-summary i::before { content: "\F62A"; color: var(--text-muted); }
-    
+    .btn-toggle-summary { background: none; border: none; color: var(--primary-color); font-size: 1.4rem; }
+    .overlay-open .btn-toggle-summary i::before { content: "\F62A"; }
     .responsive-summary-overlay {
       position: fixed; top: 0; left: 0; width: 100%; height: 100%;
       background: rgba(0, 0, 0, 0.6); z-index: 1040;
@@ -166,109 +98,131 @@
     }
     .overlay-open .responsive-summary-content { transform: translateY(0); }
 
-    .btn-primary { background-color: var(--primary-color); border: none; }
-    @media (max-width: 576px) { .custom-dropdown-wrapper { width: 100%; } }
+    .btn-primary { background-color: var(--primary-color); border: none; padding: 12px; }
+    .btn-primary:hover { background-color: #5531c0; }
   </style>
 </head>
+
 
 <body class="bg-light">
 
   <div class="container py-5 mb-5 mb-lg-0">
-    <h2 class="fw-bold mb-4">Your cart</h2>
+    <div class="row">
+      <div class="col-12">
+        <h2 class="fw-bold mb-2">Finalisez votre commande</h2>
+        <!-- <p class="text-muted mb-4">Plus qu'une étape pour libérer votre productivité.</p> -->
+      </div>
+    </div>
 
     <div class="row g-4">
       <div class="col-lg-8">
-        <div class="cart-card mb-4">
+        <div class="cart-card mb-4 shadow-sm">
           <div class="d-flex align-items-start gap-3">
             <div class="product-icon-box"><i class="bi bi-laptop"></i></div>
             <div class="flex-grow-1">
-              <h5 class="fw-bold mb-1">HP Notebook Plan</h5>
-              <p class="text-muted small mb-0">Standard Performance</p>
+              <h5 class="fw-bold mb-1">Plan Mix Fleet</h5>
+              <p class="text-muted small mb-0">Performance Standard pour Professionnels</p>
 
               <div class="selectors-stack mt-3">
                 <div class="selector-group">
-                  <label class="selector-title">Période</label>
+                  <label class="selector-title">Durée de l'engagement</label>
                   <div class="d-flex align-items-center gap-3">
                     <div class="custom-dropdown-wrapper">
                       <select class="custom-select" id="mainPeriod">
-                        <option value="16" data-save="0">1 month</option>
-                        <option value="12" data-save="48">12 months</option>
-                        <option value="9" data-save="168" selected>24 months</option>
+                        <option value="9500" data-save="0">1 mois (Essai)</option>
+                        <option value="7500" data-save="24000">12 mois (Populaire)</option>
+                        <option value="5900" data-save="86400" selected>24 mois (Meilleur prix)</option>
                       </select>
                     </div>
-                    <span class="badge bg-success-subtle text-success save-badge-external" id="saveAmountInline">Save $168.00</span>
+                    <span class="badge bg-success-subtle text-success save-badge-external"
+                      id="saveAmountInline">Économisez 86.400 FCFA</span>
                   </div>
                 </div>
 
                 <div class="selector-group">
-                  <label class="selector-title">Configuration Écran</label>
+                  <label class="selector-title">Configuration</label>
                   <div class="custom-dropdown-wrapper w-100">
                     <select class="custom-select w-100" id="screenSize">
-                      <option value="0" selected>13.3-inch Display</option>
-                      <option value="50">14-inch Display (+$50)</option>
-                      <option value="100">15.6-inch Display (+$100)</option>
+                      <option value="0" selected>FM 3216 (Inclus)</option>
+                      <option value="2500">Tracer (+2.500 FCFA/mo)</option>
+                      <option value="5000">Mix 3000 (+5.000 FCFA/mo)</option>
                     </select>
                   </div>
                 </div>
 
-                <div class="selector-group col-md-3">
+                <div class="selector-group col-md-4">
                   <label class="selector-title">Quantité</label>
                   <input type="number" class="form-control quantity-input" id="mainQty" value="1" min="1">
                 </div>
               </div>
             </div>
             <div class="text-end">
-              <h4 class="fw-bold mb-0">$<span id="mainPriceDisplay">9.00</span><span class="small text-muted">/mo</span></h4>
-              <p class="text-decoration-line-through text-muted small mb-0">$24.49/mo</p>
+              <h4 class="fw-bold mb-0"><span id="mainPriceDisplay">5.900</span><span class="small text-muted">
+                  F/mo</span></h4>
+              <p class="text-decoration-line-through text-muted small mb-0">15.000 F/mo</p>
             </div>
           </div>
         </div>
 
-        <h6 class="fw-bold text-muted mb-3">Add-ons & Options</h6>
-        <div class="cart-card addon-card mb-3">
+        <h6 class="fw-bold text-muted mb-3 text-uppercase small">Options Additionnelles</h6>
+
+        <div class="cart-card addon-card mb-3 shadow-sm">
           <div class="d-flex align-items-start gap-3">
-            <input class="form-check-input addon-checkbox" type="checkbox" value="15.00" id="addonCloud">
+            <input class="form-check-input addon-checkbox" type="checkbox" value="5000" id="addonCloud">
             <div class="flex-grow-1">
-              <label class="fw-bold d-block" for="addonCloud">Cloud Storage <span class="badge bg-primary-subtle text-primary ms-2 small">Recommended</span></label>
-              <p class="text-muted small mb-2">Espace de stockage sécurisé.</p>
+              <label class="fw-bold d-block" for="addonCloud">Espace Cloud Sécurisé <span
+                  class="badge bg-primary-subtle text-primary ms-2 small">Recommandé</span></label>
+              <p class="text-muted small mb-2">Ne perdez jamais vos fichiers. Stockage ultra-rapide accessible partout.
+              </p>
               <div class="custom-dropdown-wrapper w-100">
-                <select class="custom-select w-100"><option>500 GB Storage</option></select>
+                <select class="custom-select w-100">
+                  <option>500 Go de Stockage (+5.000 FCFA)</option>
+                </select>
               </div>
             </div>
-            <div class="fw-bold">$ 15.00</div>
+            <div class="fw-bold">5.000 F</div>
           </div>
         </div>
-        <div class="cart-card addon-card mb-3">
+
+        <div class="cart-card addon-card mb-3 shadow-sm">
           <div class="d-flex align-items-start gap-3">
-            <input class="form-check-input addon-checkbox" type="checkbox" value="5.00" id="addonSupport">
+            <input class="form-check-input addon-checkbox" type="checkbox" value="3000" id="addonSupport">
             <div class="flex-grow-1">
-              <label class="fw-bold d-block" for="addonSupport">Support Prioritaire 24/7</label>
-              <p class="text-muted small mb-0">Accès direct à nos experts.</p>
+              <label class="fw-bold d-block" for="addonSupport">Support VIP 24h/7j</label>
+              <p class="text-muted small mb-0">Une question ? Nos experts vous répondent en moins de 5 minutes.</p>
             </div>
-            <div class="fw-bold">$ 5.00</div>
+            <div class="fw-bold">3.000 F</div>
           </div>
         </div>
       </div>
 
       <div class="col-lg-4 d-none d-lg-block">
-        <div class="cart-card sticky-top" style="top: 20px;">
-          <h5 class="fw-bold mb-4">Order summary</h5>
+        <div class="cart-card sticky-top shadow border-0" style="top: 20px;">
+          <h5 class="fw-bold mb-4">Résumé de la commande</h5>
           <div id="desktopSummaryList"></div>
           <hr class="my-4">
-          <label class="small fw-bold text-muted d-block mb-3">Payment method</label>
+          <label class="small fw-bold text-muted d-block mb-3">Moyen de paiement</label>
           <div class="payment-methods-grid mb-4">
-            <div class="payment-box active" data-method="wave"><img src="https://play-lh.googleusercontent.com/B2sfLVgRWgV_bk5rtF51w6AieJWXc0qWbyWoaA8pMNp-is41AmvhJYVr95Dq9hT97Es" alt="Wave"></div>
-            <div class="payment-box" data-method="orange"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Orange"></div>
-            <div class="payment-box" data-method="visa"><img src="https://cdn-icons-png.flaticon.com/256/825/825510.png" alt="Visa"></div>
+            <div class="payment-box active" data-method="wave"><img
+                src="https://play-lh.googleusercontent.com/B2sfLVgRWgV_bk5rtF51w6AieJWXc0qWbyWoaA8pMNp-is41AmvhJYVr95Dq9hT97Es"
+                alt="Wave"></div>
+            <div class="payment-box" data-method="orange"><img
+                src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Orange"></div>
+            <div class="payment-box" data-method="visa"><img src="https://cdn-icons-png.flaticon.com/256/825/825510.png"
+                alt="Visa"></div>
           </div>
           <div class="d-flex justify-content-between align-items-end mb-4">
             <span class="h5 fw-bold mb-0">Total</span>
             <div class="text-end">
-              <p class="text-decoration-line-through text-muted small mb-0" id="totalOldPriceDesktop">$0.00</p>
-              <h3 class="fw-bold text-primary mb-0">$<span id="grandTotalDesktop">0.00</span></h3>
+              <p class="text-decoration-line-through text-muted small mb-0" id="totalOldPriceDesktop">0 F</p>
+              <h3 class="fw-bold text-primary mb-0"><span id="grandTotalDesktop">0</span><span class="h5 mb-0">
+                  FCFA</span></h3>
             </div>
           </div>
-          <button class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-pill">Continue</button>
+          <button class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-pill shadow-sm">Confirmer ma
+            commande</button>
+          <p class="text-center text-muted mt-3 mb-0" style="font-size: 0.7rem;"><i class="bi bi-shield-lock-fill"></i>
+            Paiement 100% sécurisé et crypté</p>
         </div>
       </div>
     </div>
@@ -277,11 +231,11 @@
   <div class="responsive-bottom-bar d-lg-none" id="responsiveBottomBar">
     <div class="container-fluid d-flex align-items-center justify-content-between h-100 px-3">
       <div>
-        <span class="text-muted x-small d-block">Total:</span>
-        <span class="fw-bold h5 mb-0">$<span id="grandTotalResponsive">0.00</span></span>
+        <span class="text-muted x-small d-block">Total à payer :</span>
+        <span class="fw-bold h5 mb-0"><span id="grandTotalResponsive">0</span> F</span>
       </div>
       <div class="d-flex align-items-center gap-2">
-        <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold">Continue</button>
+        <button class="btn btn-primary btn-sm rounded-pill px-4 fw-bold">Continuer</button>
         <button class="btn-toggle-summary" id="toggleSummaryBtn"><i class="bi bi-chevron-up"></i></button>
       </div>
     </div>
@@ -289,14 +243,17 @@
 
   <div class="responsive-summary-overlay d-lg-none" id="responsiveSummaryOverlay">
     <div class="responsive-summary-content">
-      <h5 class="fw-bold mb-4">Order summary</h5>
+      <h5 class="fw-bold mb-4">Détails de votre panier</h5>
       <div id="responsiveSummaryList"></div>
       <hr class="my-4">
-      <label class="small fw-bold text-muted d-block mb-3">Payment method</label>
+      <label class="small fw-bold text-muted d-block mb-3">Payer avec</label>
       <div class="payment-methods-grid mb-4">
-        <div class="payment-box active" data-method="wave"><img src="https://play-lh.googleusercontent.com/B2sfLVgRWgV_bk5rtF51w6AieJWXc0qWbyWoaA8pMNp-is41AmvhJYVr95Dq9hT97Es" alt="Wave"></div>
-        <div class="payment-box" data-method="orange"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Orange"></div>
-        <div class="payment-box" data-method="visa"><img src="https://cdn-icons-png.flaticon.com/256/825/825510.png" alt="Visa"></div>
+        <div class="payment-box active"><img
+            src="https://play-lh.googleusercontent.com/B2sfLVgRWgV_bk5rtF51w6AieJWXc0qWbyWoaA8pMNp-is41AmvhJYVr95Dq9hT97Es"
+            alt="Wave"></div>
+        <div class="payment-box"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
+            alt="Orange"></div>
+        <div class="payment-box"><img src="https://cdn-icons-png.flaticon.com/256/825/825510.png" alt="Visa"></div>
       </div>
       <!-- <button class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-pill mb-3">Continue</button> -->
     </div>
@@ -310,8 +267,12 @@
       const addonCheckboxes = document.querySelectorAll('.addon-checkbox');
       const desktopList = document.getElementById('desktopSummaryList');
       const responsiveList = document.getElementById('responsiveSummaryList');
-      
-      const baseOldPricePerMo = 24.49;
+
+      const baseOldPricePerMo = 15000; // Prix barré fictif
+
+      function formatNumber(num) {
+        return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+      }
 
       function calculateCart() {
         const months = parseInt(periodSelect.options[periodSelect.selectedIndex].text.split(' ')[0]);
@@ -320,16 +281,16 @@
         const saveValue = parseFloat(periodSelect.options[periodSelect.selectedIndex].dataset.save);
         const screenSizePrice = parseFloat(screenSelect.value);
 
-        // Mise à jour affichage gauche
-        document.getElementById('mainPriceDisplay').innerText = (pricePerMonthPlan + screenSizePrice).toFixed(2);
-        document.getElementById('saveAmountInline').innerText = `Save $${saveValue.toFixed(2)}`;
+        // UI Updates
+        document.getElementById('mainPriceDisplay').innerText = formatNumber(pricePerMonthPlan + screenSizePrice);
+        document.getElementById('saveAmountInline').innerText = `Économisez ${formatNumber(saveValue * qty)} FCFA`;
 
         const summaryData = {
           mainItem: {
             title: 'HP Notebook Plan',
-            label: `${months}-month period (x${qty})`,
-            oldPrice: (baseOldPricePerMo * months * qty).toFixed(2),
-            newPrice: (pricePerMonthPlan * months * qty).toFixed(2),
+            label: `Engagement ${months} mois (x${qty})`,
+            oldPrice: baseOldPricePerMo * months * qty,
+            newPrice: pricePerMonthPlan * months * qty,
           },
           options: [],
           addons: [],
@@ -338,56 +299,55 @@
         };
 
         if (screenSizePrice > 0) {
-          summaryData.options.push({ title: 'Configuration Écran', price: (screenSizePrice * months * qty).toFixed(2) });
+          summaryData.options.push({ title: 'Option Boitier', price: screenSizePrice * months * qty });
         }
 
         addonCheckboxes.forEach(cb => {
           if (cb.checked) {
             const label = cb.closest('.addon-card').querySelector('label').innerText.split('\n')[0];
-            summaryData.addons.push({ title: label, price: parseFloat(cb.value).toFixed(2) });
+            summaryData.addons.push({ title: label, price: parseFloat(cb.value) });
           }
         });
 
-        // Calcul totaux
-        summaryData.totalNew = parseFloat(summaryData.mainItem.newPrice);
-        summaryData.totalOld = parseFloat(summaryData.mainItem.oldPrice);
-        summaryData.options.forEach(opt => { summaryData.totalNew += parseFloat(opt.price); summaryData.totalOld += parseFloat(opt.price); });
-        summaryData.addons.forEach(add => { summaryData.totalNew += parseFloat(add.price); summaryData.totalOld += parseFloat(add.price); });
+        summaryData.totalNew = summaryData.mainItem.newPrice;
+        summaryData.totalOld = summaryData.mainItem.oldPrice;
+        summaryData.options.forEach(opt => { summaryData.totalNew += opt.price; summaryData.totalOld += opt.price; });
+        summaryData.addons.forEach(add => { summaryData.totalNew += add.price; summaryData.totalOld += add.price; });
 
-        // Rendu HTML
+        // Build HTML Summary
         let html = `
           <div class="mb-3">
-            <div class="d-flex justify-content-between"><strong>${summaryData.mainItem.title}</strong><span class="text-decoration-line-through text-muted small">$${summaryData.mainItem.oldPrice}</span></div>
-            <div class="d-flex justify-content-between"><span class="text-muted small">${summaryData.mainItem.label}</span><strong>$${summaryData.mainItem.newPrice}</strong></div>
+            <div class="d-flex justify-content-between align-items-start">
+                <strong>${summaryData.mainItem.title}</strong>
+                <span class="text-decoration-line-through text-muted small">${formatNumber(summaryData.mainItem.oldPrice)} F</span>
+            </div>
+            <div class="d-flex justify-content-between">
+                <span class="text-muted small">${summaryData.mainItem.label}</span>
+                <strong>${formatNumber(summaryData.mainItem.newPrice)} F</strong>
+            </div>
           </div>`;
-        
-        summaryData.options.forEach(o => html += `<div class="d-flex justify-content-between text-muted small"><span>${o.title}</span><span>$${o.price}</span></div>`);
-        summaryData.addons.forEach(a => html += `<div class="d-flex justify-content-between text-muted small mt-1"><span>${a.title}</span><span>$${a.price}</span></div>`);
-        html += `<div class="d-flex justify-content-between text-muted small mt-3 pt-2 border-top"><span>Taxes</span><span>$0.00</span></div>`;
+
+        summaryData.options.forEach(o => html += `<div class="d-flex justify-content-between text-muted small"><span>${o.title}</span><span>+ ${formatNumber(o.price)} F</span></div>`);
+        summaryData.addons.forEach(a => html += `<div class="d-flex justify-content-between text-muted small mt-1"><span>${a.title}</span><span>+ ${formatNumber(a.price)} F</span></div>`);
+        html += `<div class="d-flex justify-content-between text-muted small mt-3 pt-2 border-top"><span>Taxes</span><span>0 F</span></div>`;
 
         desktopList.innerHTML = html;
         responsiveList.innerHTML = html;
-        
-        const finalNew = summaryData.totalNew.toFixed(2);
-        document.getElementById('grandTotalDesktop').innerText = finalNew;
-        document.getElementById('grandTotalResponsive').innerText = finalNew;
-        document.getElementById('totalOldPriceDesktop').innerText = `$${summaryData.totalOld.toFixed(2)}`;
+
+        document.getElementById('grandTotalDesktop').innerText = formatNumber(summaryData.totalNew);
+        document.getElementById('grandTotalResponsive').innerText = formatNumber(summaryData.totalNew);
+        document.getElementById('totalOldPriceDesktop').innerText = `${formatNumber(summaryData.totalOld)} F`;
       }
 
-      // Event Listeners
+      // Listeners
       [periodSelect, screenSelect, qtyInput].forEach(el => el.addEventListener('change', calculateCart));
       qtyInput.addEventListener('input', calculateCart);
       addonCheckboxes.forEach(cb => cb.addEventListener('change', calculateCart));
 
-      // Toggle Mobile
+      // UI Interactivity
       document.getElementById('toggleSummaryBtn').addEventListener('click', () => document.body.classList.toggle('overlay-open'));
-      document.getElementById('responsiveSummaryOverlay').addEventListener('click', (e) => {
-        if(e.target.id === 'responsiveSummaryOverlay') document.body.classList.remove('overlay-open');
-      });
-
-      // Payments
       document.querySelectorAll('.payment-box').forEach(box => {
-        box.addEventListener('click', function() {
+        box.addEventListener('click', function () {
           this.parentNode.querySelectorAll('.payment-box').forEach(b => b.classList.remove('active'));
           this.classList.add('active');
         });
