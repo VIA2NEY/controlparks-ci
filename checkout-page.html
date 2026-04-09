@@ -100,6 +100,50 @@
 
     .btn-primary { background-color: var(--primary-color); border: none; padding: 12px; }
     .btn-primary:hover { background-color: #5531c0; }
+
+    .custom-input {
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      padding: 10px;
+    }
+    
+    .upload-box {
+      border: 2px dashed #d1d5db;
+      border-radius: 12px;
+      height: 120px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+      background: #f9fafb;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .upload-box:hover {
+      border-color: var(--primary-color);
+      background: #f3f4f6;
+    }
+
+    .img-preview {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .payment-detail-field {
+      animation: fadeIn 0.3s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
   </style>
 </head>
 
@@ -155,6 +199,7 @@
                   <input type="number" class="form-control quantity-input" id="mainQty" value="1" min="1">
                 </div>
               </div>
+
             </div>
             <div class="text-end">
               <h4 class="fw-bold mb-0"><span id="mainPriceDisplay">5.900</span><span class="small text-muted">
@@ -162,6 +207,58 @@
               <p class="text-decoration-line-through text-muted small mb-0">15.000 F/mo</p>
             </div>
           </div>
+
+          <hr class="my-4">
+          <h5 class="fw-bold mb-3"><i class="bi bi-shield-check me-2 text-primary"></i>Vérification de conformité</h5>
+          <p class="text-muted small mb-4">Conformément à la réglementation, veuillez fournir vos informations
+            d'identité pour valider l'achat.</p>
+
+          <div class="row g-3">
+            <div class="col-md-6">
+              <label class="selector-title">Prénom</label>
+              <input type="text" class="form-control custom-input" placeholder="Ex: Jean" required>
+            </div>
+            <div class="col-md-6">
+              <label class="selector-title">Nom</label>
+              <input type="text" class="form-control custom-input" placeholder="Ex: Kouassi" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="selector-title">Email</label>
+              <input type="email" class="form-control custom-input" placeholder="jean.k@exemple.com" required>
+            </div>
+            <div class="col-md-6">
+              <label class="selector-title">Numéro de téléphone</label>
+              <input type="tel" class="form-control custom-input" placeholder="+225 00 00 00 00 00" required>
+            </div>
+
+            <div class="col-md-6">
+              <label class="selector-title">CNI Recto</label>
+              <div class="upload-box" onclick="document.getElementById('cniRecto').click()">
+                <input type="file" id="cniRecto" hidden accept="image/*"
+                  onchange="previewImage(this, 'previewRecto')">
+                <img id="previewRecto" class="img-preview d-none">
+                <div id="placeholderRecto">
+                  <i class="bi bi-card-image fs-2"></i>
+                  <span class="d-block small text-muted">Cliquez pour ajouter le Recto</span>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6">
+              <label class="selector-title">CNI Verso</label>
+              <div class="upload-box" onclick="document.getElementById('cniVerso').click()">
+                <input type="file" id="cniVerso" hidden accept="image/*"
+                  onchange="previewImage(this, 'previewVerso')">
+                <img id="previewVerso" class="img-preview d-none">
+                <div id="placeholderVerso">
+                  <i class="bi bi-card-image fs-2"></i>
+                  <span class="d-block small text-muted">Cliquez pour ajouter le Verso</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+
         </div>
 
         <h6 class="fw-bold text-muted mb-3 text-uppercase small">Options Additionnelles</h6>
@@ -200,7 +297,7 @@
         <div class="cart-card sticky-top shadow border-0" style="top: 20px;">
           <h5 class="fw-bold mb-4">Résumé de la commande</h5>
           <div id="desktopSummaryList"></div>
-          <hr class="my-4">
+          <!-- <hr class="my-4">
           <label class="small fw-bold text-muted d-block mb-3">Moyen de paiement</label>
           <div class="payment-methods-grid mb-4">
             <div class="payment-box active" data-method="wave"><img
@@ -210,13 +307,56 @@
                 src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Orange"></div>
             <div class="payment-box" data-method="visa"><img src="https://cdn-icons-png.flaticon.com/256/825/825510.png"
                 alt="Visa"></div>
-          </div>
+          </div> -->
           <div class="d-flex justify-content-between align-items-end mb-4">
             <span class="h5 fw-bold mb-0">Total</span>
             <div class="text-end">
               <p class="text-decoration-line-through text-muted small mb-0" id="totalOldPriceDesktop">0 F</p>
               <h3 class="fw-bold text-primary mb-0"><span id="grandTotalDesktop">0</span><span class="h5 mb-0">
                   FCFA</span></h3>
+            </div>
+          </div>
+
+          <div class="cart-card mb-4 shadow-sm">
+            <label class="selector-title mb-3">Moyen de paiement</label>
+            <div class="payment-methods-grid mb-3">
+              <div class="payment-box active" data-method="mobile-money"><img
+                  src="https://play-lh.googleusercontent.com/B2sfLVgRWgV_bk5rtF51w6AieJWXc0qWbyWoaA8pMNp-is41AmvhJYVr95Dq9hT97Es"
+                  alt="Wave"></div>
+              <div class="payment-box" data-method="mobile-money"><img
+                  src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Orange"></div>
+              <div class="payment-box" data-method="visa"><img
+                  src="https://cdn-icons-png.flaticon.com/256/825/825510.png" alt="Visa"></div>
+            </div>
+
+            <div id="field-mobile-money" class="payment-detail-field">
+              <label class="selector-title">Numéro de paiement (CIV)</label>
+              <div class="input-group">
+                <span class="input-group-text bg-white border-end-0 text-muted">+225</span>
+                <input type="tel" class="form-control border-start-0" placeholder="07 00 00 00 00">
+              </div>
+              <p class="small text-muted mt-2">Une demande de confirmation sera envoyée sur ce numéro.</p>
+            </div>
+
+            <div id="field-visa" class="payment-detail-field d-none">
+              <div class="row g-3">
+                <div class="col-12">
+                  <label class="selector-title">Numéro de carte</label>
+                  <input type="text" class="form-control" placeholder="4242 4242 4242 4242">
+                </div>
+                <div class="col-md-6">
+                  <label class="selector-title">Expiration</label>
+                  <input type="text" class="form-control" placeholder="MM / YY">
+                </div>
+                <div class="col-md-6">
+                  <label class="selector-title">Code CVC</label>
+                  <input type="text" class="form-control" placeholder="CVC">
+                </div>
+                <div class="col-12">
+                  <label class="selector-title">Nom sur la carte</label>
+                  <input type="text" class="form-control" placeholder="Ex: Jean Kouassi">
+                </div>
+              </div>
             </div>
           </div>
           <button class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-pill shadow-sm">Confirmer ma
@@ -246,14 +386,47 @@
       <h5 class="fw-bold mb-4">Détails de votre panier</h5>
       <div id="responsiveSummaryList"></div>
       <hr class="my-4">
+
+      <div id="mobile-payment-fields" class="mb-4">
+        <div id="mobile-field-money" class="payment-detail-field">
+          <label class="selector-title">Numéro de paiement (CIV)</label>
+          <div class="input-group">
+            <span class="input-group-text bg-white border-end-0 text-muted">+225</span>
+            <input type="tel" class="form-control border-start-0" placeholder="07 00 00 00 00">
+          </div>
+        </div>
+
+        <div id="mobile-field-visa" class="payment-detail-field d-none">
+          <div class="row g-2">
+            <div class="col-12">
+              <input type="text" class="form-control custom-input" placeholder="Numéro de carte">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control custom-input" placeholder="MM/YY">
+            </div>
+            <div class="col-6">
+              <input type="text" class="form-control custom-input" placeholder="CVC">
+            </div>
+            <div>
+              <input type="text" class="form-control custom-input" placeholder="Nom sur la carte">
+            </div>
+          </div>
+        </div>
+      </div>
+
       <label class="small fw-bold text-muted d-block mb-3">Payer avec</label>
       <div class="payment-methods-grid mb-4">
-        <div class="payment-box active"><img
+        <div class="payment-box active" data-method="mobile-money">
+          <img
             src="https://play-lh.googleusercontent.com/B2sfLVgRWgV_bk5rtF51w6AieJWXc0qWbyWoaA8pMNp-is41AmvhJYVr95Dq9hT97Es"
-            alt="Wave"></div>
-        <div class="payment-box"><img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg"
-            alt="Orange"></div>
-        <div class="payment-box"><img src="https://cdn-icons-png.flaticon.com/256/825/825510.png" alt="Visa"></div>
+            alt="Wave">
+        </div>
+        <div class="payment-box" data-method="mobile-money">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Orange_logo.svg" alt="Orange">
+        </div>
+        <div class="payment-box" data-method="visa">
+          <img src="https://cdn-icons-png.flaticon.com/256/825/825510.png" alt="Visa">
+        </div>
       </div>
       <!-- <button class="btn btn-primary btn-lg w-100 py-3 fw-bold rounded-pill mb-3">Continue</button> -->
     </div>
@@ -287,7 +460,7 @@
 
         const summaryData = {
           mainItem: {
-            title: 'HP Notebook Plan',
+            title: 'Plan Mix Fleet',
             label: `Engagement ${months} mois (x${qty})`,
             oldPrice: baseOldPricePerMo * months * qty,
             newPrice: pricePerMonthPlan * months * qty,
@@ -350,6 +523,36 @@
         box.addEventListener('click', function () {
           this.parentNode.querySelectorAll('.payment-box').forEach(b => b.classList.remove('active'));
           this.classList.add('active');
+        });
+      });
+      
+      // Logique de changement de paiement (Générale pour Desktop et Mobile)
+      document.querySelectorAll('.payment-box').forEach(box => {
+        box.addEventListener('click', function () {
+          const method = this.getAttribute('data-method');
+          
+          // 1. Gérer l'état visuel (classe active)
+          // On cible uniquement les frères du parent pour ne pas mélanger desktop et mobile
+          this.parentNode.querySelectorAll('.payment-box').forEach(b => b.classList.remove('active'));
+          this.classList.add('active');
+
+          // 2. Mise à jour version DESKTOP (Champs en dessous)
+          const desktopMoney = document.getElementById('field-mobile-money');
+          const desktopVisa = document.getElementById('field-visa');
+          
+          if(desktopMoney && desktopVisa) {
+              desktopMoney.classList.toggle('d-none', method !== 'mobile-money');
+              desktopVisa.classList.toggle('d-none', method !== 'visa');
+          }
+
+          // 3. Mise à jour version MOBILE (Champs au-dessus)
+          const mobileMoney = document.getElementById('mobile-field-money');
+          const mobileVisa = document.getElementById('mobile-field-visa');
+          
+          if(mobileMoney && mobileVisa) {
+              mobileMoney.classList.toggle('d-none', method !== 'mobile-money');
+              mobileVisa.classList.toggle('d-none', method !== 'visa');
+          }
         });
       });
 
