@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta content="width=device-width, initial-scale=1.0" name="viewport">
-	<title>Catalogue Gestion de Flotte - Axis</title>
+	<title>Catalogue - Control Parks</title>
 
 	<link
 		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
@@ -432,17 +432,18 @@
 
 		.btn-action {
 			width: 100%;
-			background: var(--primary-blue);
-			color: white;
-			border: none;
+			background: white;
+			color: black;
+			border: 2px solid #343030;
 			padding: 10px;
 			border-radius: 8px;
-			font-weight: 600;
-			transition: 0.3s;
+			font-weight: 500;
+			transition: all 0.3s ease;
 		}
 
 		.btn-action:hover {
-			background: #0052cc;
+			background: black;
+			color: white;
 		}
 	</style>
 </head>
@@ -456,13 +457,13 @@
       <a href="index.html" class="logo d-flex align-items-center">
         <!-- Uncomment the line below if you also wish to use an image logo -->
         <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Axis</h1>
+        <h1 class="sitename">Control Parks</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         
 				<ul>
-					<li><a href="#hero">Accueil</a></li>
+					<li><a href="index.html">Accueil</a></li>
 					<li><a href="#services">Services</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
@@ -478,9 +479,8 @@
 			<div class="breadcrumbs">
 				<nav aria-label="breadcrumb">
 					<ol class="breadcrumb">
-						<li class="breadcrumb-item"><a href="#"><i class="bi bi-house"></i> Home</a></li>
-						<li class="breadcrumb-item"><a href="#">Category</a></li>
-						<li class="breadcrumb-item active current">Nos Produits</li>
+						<li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house"></i> Accueil</a></li>
+						<li class="breadcrumb-item active current">Boutique</li>
 					</ol>
 				</nav>
 			</div>
@@ -541,9 +541,9 @@
 							<!-- Search Bar -->
 							<div class="search-bar aos-init aos-animate" data-aos="fade-down" data-aos-delay="100">
 								<i class="bi bi-search search-icon"></i>
-								<input type="text" class="search-input" id="productSearch" placeholder="Find what you're looking for..."
+								<input type="text" class="search-input" id="productSearch" placeholder="Trouver le produit que vous recherchez..."
 									aria-label="Search products">
-								<button class="search-action" type="button">Search</button>
+								<button class="search-action" type="button">Chercher</button>
 							</div>
 
 							<!-- Toolbar -->
@@ -602,10 +602,10 @@
 											<span class="filters-label"><i class="bi bi-funnel-fill"></i> Filtré par :</span>
 											<div class="chip-list">
 												<span class="chip">
-													Electronics <button class="chip-close"><i class="bi bi-x-lg"></i></button>
+													Prix croissant <button class="chip-close"><i class="bi bi-x-lg"></i></button>
 												</span>
 												<span class="chip">
-													$50 to $100 <button class="chip-close"><i class="bi bi-x-lg"></i></button>
+													Produit <button class="chip-close"><i class="bi bi-x-lg"></i></button>
 												</span>
 											</div>
 											<button class="reset-btn"><i class="bi bi-arrow-counterclockwise"></i> Réinitialiser</button>
@@ -629,7 +629,7 @@
 							<div class="col-md-4" data-aos="fade-up">
 								<article class="item-card">
 									<div class="item-media">
-										<img src="https://images.unsplash.com/photo-1580273916550-e323be2ae537?q=80&w=400"
+										<img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg"
 											alt="Boitier GPS">
 									</div>
 									<div class="item-info">
@@ -638,7 +638,7 @@
 										<span class="item-cost">45 000 FCFA</span>
 									</div>
 									<div class="card-footer-action">
-										<button class="btn-action">Voir les détails</button>
+										<button class="btn-action">Ajouter au Panier</button>
 									</div>
 								</article>
 							</div>
@@ -646,7 +646,7 @@
 							<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
 								<article class="item-card">
 									<div class="item-media">
-										<img src="https://images.unsplash.com/photo-1551524559-8af4e6624178?q=80&w=400" alt="Dashcam">
+										<img src="https://www.mixtelematics.com/images/mix-vision/na/hero/driver-facing-camera-front.webp" alt="Dashcam">
 									</div>
 									<div class="item-info">
 										<span class="item-tag">Sécurité</span>
@@ -654,7 +654,7 @@
 										<span class="item-cost">125 000 FCFA</span>
 									</div>
 									<div class="card-footer-action">
-										<button class="btn-action">Voir les détails</button>
+										<button class="btn-action">Ajouter au Panier</button>
 									</div>
 								</article>
 							</div>
@@ -670,7 +670,7 @@
 										<span class="item-cost">75 000 FCFA</span>
 									</div>
 									<div class="card-footer-action">
-										<button class="btn-action">Voir les détails</button>
+										<button class="btn-action">Ajouter au Panier</button>
 									</div>
 								</article>
 							</div>
