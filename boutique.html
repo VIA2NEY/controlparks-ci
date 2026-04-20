@@ -445,33 +445,83 @@
 			background: black;
 			color: white;
 		}
+
+
+		/* --- PRICING OFFRE CARDS --- */
+
+		.pricing-card {
+			transition: transform 0.3s ease, box-shadow 0.3s ease;
+			border: none;
+			border-radius: 15px;
+		}
+
+		.pricing-card:hover {
+			transform: translateY(-10px);
+			box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+		}
+
+		.feature-list li {
+			margin-bottom: 0.8rem;
+			color: #6c757d;
+		}
+
+		.popular-badge {
+			position: absolute;
+			top: -12px;
+			right: 20px;
+			border-radius: 20px;
+		}
+
+		.gradient-custom {
+			background: linear-gradient(135deg, #313131 0%, #5b5858 100%);
+		}
+
+		/* DIVIDER */
+		.divider-offer {
+			display: flex;
+			align-items: center;
+			text-align: center;
+		}
+
+		.divider-offer::before,
+		.divider-offer::after {
+			content: "";
+			flex: 1;
+			border-bottom: 1px solid #ddd;
+		}
+
+		.divider-offer span {
+			padding: 0 15px;
+			font-weight: 600;
+			color: #555;
+			font-size: 1.1rem;
+		}
 	</style>
 </head>
 
 <body class="starter-page-page">
 
-	
-  <header id="header" class="header d-flex align-items-center sticky">
-    <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <a href="index.html" class="logo d-flex align-items-center">
-        <!-- Uncomment the line below if you also wish to use an image logo -->
-        <!-- <img src="assets/img/logo.webp" alt=""> -->
-        <h1 class="sitename">Control Parks</h1>
-      </a>
+	<header id="header" class="header d-flex align-items-center sticky">
+		<div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
 
-      <nav id="navmenu" class="navmenu">
-        
+			<a href="index.html" class="logo d-flex align-items-center">
+				<!-- Uncomment the line below if you also wish to use an image logo -->
+				<!-- <img src="assets/img/logo.webp" alt=""> -->
+				<h1 class="sitename">Control Parks</h1>
+			</a>
+
+			<nav id="navmenu" class="navmenu">
 				<ul>
 					<li><a href="index.html">Accueil</a></li>
 					<li><a href="#services">Services</a></li>
 					<li><a href="#contact">Contact</a></li>
 				</ul>
-        <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
-      </nav>
+				<i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+			</nav>
 
-    </div>
-  </header>
+		</div>
+	</header>
 
 	<main class="main">
 
@@ -526,7 +576,7 @@
 				</div>
 
 				<div class="col-lg-8">
-					
+
 					<!-- Category Header Section -->
 					<section id="category-header" class="category-header section">
 
@@ -541,8 +591,8 @@
 							<!-- Search Bar -->
 							<div class="search-bar aos-init aos-animate" data-aos="fade-down" data-aos-delay="100">
 								<i class="bi bi-search search-icon"></i>
-								<input type="text" class="search-input" id="productSearch" placeholder="Trouver le produit que vous recherchez..."
-									aria-label="Search products">
+								<input type="text" class="search-input" id="productSearch"
+									placeholder="Trouver le produit que vous recherchez..." aria-label="Search products">
 								<button class="search-action" type="button">Chercher</button>
 							</div>
 
@@ -625,12 +675,11 @@
 						</div> -->
 						<!-- End Section Title -->
 
-						<div class="row g-4">
+						<div class="row g-4 row-cols-1 row-cols-md-3 ">
 							<div class="col-md-4" data-aos="fade-up">
 								<article class="item-card">
 									<div class="item-media">
-										<img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg"
-											alt="Boitier GPS">
+										<img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg" alt="Boitier GPS">
 									</div>
 									<div class="item-info">
 										<span class="item-tag">Hardware</span>
@@ -646,7 +695,8 @@
 							<div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
 								<article class="item-card">
 									<div class="item-media">
-										<img src="https://www.mixtelematics.com/images/mix-vision/na/hero/driver-facing-camera-front.webp" alt="Dashcam">
+										<img src="https://www.mixtelematics.com/images/mix-vision/na/hero/driver-facing-camera-front.webp"
+											alt="Dashcam">
 									</div>
 									<div class="item-info">
 										<span class="item-tag">Sécurité</span>
@@ -673,7 +723,101 @@
 										<button class="btn-action">Ajouter au Panier</button>
 									</div>
 								</article>
+							</div><br>
+
+							<!-- OFFRE Pro Plan -->
+							<div class="col-md-6"  data-aos="fade-up" data-aos-delay="100">
+								<div class="card h-100 pricing-card shadow position-relative">
+									<span class="badge gradient-custom text-white popular-badge px-4 py-2">Popular</span>
+									<div class="card-body p-5">
+										<h5 class="card-title text-primary text-uppercase mb-4">Professional</h5>
+										<!-- <h1 class="display-5 mb-4">$49<small class="text-muted fw-light">/mo</small></h1> -->
+
+										
+										<div class="price-section">
+											<h1 class="display-4">115000</span> Fcfa
+											</h1>
+											<div class="price-details">
+												<p>1 An</p>
+											</div>
+										</div>
+
+										<ul class="list-unstyled feature-list">
+											<li><i class="bi bi-check2 text-primary me-2"></i>15 Projects</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>50GB Storage</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>Priority Support</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>Advanced Features</li>
+										</ul>
+										<a href="checkout-page.html">
+											<button class="btn btn-outline-dark btn-lg w-100 mt-4">
+												Suivre mes Vehicules
+											</button>
+										</a>
+									</div>
+								</div>
 							</div>
+
+							<div class="col-md-6" data-aos="fade-up" data-aos-delay="100">
+								<div class="card h-100 pricing-card shadow position-relative">
+									<span class="badge gradient-custom text-white popular-badge px-4 py-2">Popular</span>
+									<div class="card-body p-5">
+										<h5 class="card-title text-primary text-uppercase mb-4">Professional</h5>
+										<!-- <h1 class="display-5 mb-4">$49<small class="text-muted fw-light">/mo</small></h1> -->
+
+										<div class="price-section">
+											<h1 class="display-4">92000</span> Fcfa
+											</h1>
+											<div class="price-details">
+												<p>1 An</p>
+											</div>
+										</div>
+
+										<ul class="list-unstyled feature-list">
+											<li><i class="bi bi-check2 text-primary me-2"></i>15 Projects</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>50GB Storage</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>Priority Support</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>Advanced Features</li>
+										</ul>
+										<a href="checkout-page.html">
+											<button class="btn btn-outline-dark btn-lg w-100 mt-4">
+												Suivre mes Vehicules
+											</button>
+										</a>
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-6"  data-aos="fade-up" data-aos-delay="100">
+								<div class="card h-100 pricing-card shadow position-relative">
+									<span class="badge gradient-custom text-white popular-badge px-4 py-2">Popular</span>
+									<div class="card-body p-5">
+										<h5 class="card-title text-primary text-uppercase mb-4">Professional</h5>
+										<!-- <h1 class="display-5 mb-4">$49<small class="text-muted fw-light">/mo</small></h1> -->
+
+										
+										<div class="price-section">
+											<h1 class="display-4">120000</span> Fcfa
+											</h1>
+											<div class="price-details">
+												<p>1 An</p>
+											</div>
+										</div>
+
+										<ul class="list-unstyled feature-list">
+											<li><i class="bi bi-check2 text-primary me-2"></i>15 Projects</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>50GB Storage</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>Priority Support</li>
+											<li><i class="bi bi-check2 text-primary me-2"></i>Advanced Features</li>
+										</ul>
+										<a href="checkout-page.html">
+											<button class="btn btn-outline-dark btn-lg w-100 mt-4">
+												Suivre mes Vehicules
+											</button>
+										</a>
+									</div>
+								</div>
+							</div>
+
 						</div>
 					</section>
 
@@ -683,10 +827,15 @@
 
 	</main>
 
+	<!-- Scroll Top -->
+	<a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+			class="bi bi-arrow-up-short"></i></a>
+
 	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/vendor/aos/aos.js"></script>
+	<script src="assets/js/main.js"></script>
 	<script>
-		AOS.init({ duration: 600, once: true });
+		AOS.init({ duration: 300, once: true });
 	</script>
 
 </body>
