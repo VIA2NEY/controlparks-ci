@@ -668,8 +668,30 @@
 			text-decoration: none;
 		}
 
-		.cart-panel-footer a {
-			justify-content: center;
+		.cart-panel-footer a,
+		.cart-panel-footer a:hover,
+		.cart-panel-footer a:active,
+		.cart-panel-footer a:focus {
+			display: flex !important;
+			justify-content: center !important;
+			align-items: center !important;
+			text-decoration: none;
+			/* Évite les décalages dus au soulignement */
+		}
+
+		/* Effet au survol du bouton panier */
+		.cart-dropdown .action-icon:hover {
+			background-color: rgba(0, 0, 0, 0.05);
+			border-radius: 8px;
+		}
+
+		/* Effet "enfoncé" lors du clic sur le bouton panier */
+		.cart-dropdown .action-icon:active {
+			background-color: rgba(0, 0, 0, 0.1);
+			transform: scale(0.95);
+			/* Réduit légèrement la taille au clic */
+			transition: 0.1s;
+			/* Transition rapide pour le clic */
 		}
 	</style>
 </head>
