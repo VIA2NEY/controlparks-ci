@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+	<meta charset="utf-8">
+	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+	<title>Paiement - Axis</title>
+
+	<link
+		href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&family=Montserrat:wght@400;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet">
+
+	<link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+	<link href="assets/vendor/aos/aos.css" rel="stylesheet">
+	<link href="assets/css/main.css" rel="stylesheet">
+
+	<style>
+		:root {
+			--primary-blue: #0559b7;
+		}
+
+		.checkout-section {
+			background-color: #ffffff;
+			/* Page blanche comme demandé */
+			padding: 60px 0;
+		}
+
+		/* --- Progress Stepper --- */
+		.progress-stepper {
+			gap: 10px;
+			align-items: center;
+		}
+
+		.step-item {
+			text-align: center;
+			color: #bbb;
+			width: 110px;
+		}
+
+		.step-item.active {
+			color: var(--primary-blue);
+			font-weight: 600;
+		}
+
+		.step-icon {
+			width: 45px;
+			height: 45px;
+			background: #fff;
+			border: 2px solid #eee;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			margin: 0 auto 10px;
+			font-size: 18px;
+			transition: 0.3s;
+		}
+
+		.step-item.active .step-icon {
+			border-color: var(--primary-blue);
+			background: var(--primary-blue);
+			color: #fff;
+		}
+
+		.step-line {
+			height: 2px;
+			background: #eee;
+			width: 50px;
+			margin-bottom: 30px;
+		}
+
+		.step-label {
+			font-size: 13px;
+		}
+
+		/* --- Summary Panel (Sticky) --- */
+		.summary-panel {
+			background: #ffffff;
+			padding: 25px;
+			border-radius: 8px;
+			border: 2px solid #eee;
+			position: sticky;
+			top: 100px;
+		}
+
+		.summary-top {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			margin-bottom: 25px;
+		}
+
+		.badge-count {
+			background: var(--primary-blue);
+			color: #fff;
+			width: 24px;
+			height: 24px;
+			border-radius: 50%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			font-size: 12px;
+			font-weight: 600;
+			flex-shrink: 0;
+		}
+
+		.summary-item {
+			display: flex;
+			align-items: center;
+			gap: 15px;
+			margin-bottom: 20px;
+		}
+
+		.item-thumb {
+			width: 60px;
+			height: 60px;
+			border-radius: 6px;
+			overflow: hidden;
+			border: 1px solid #eee;
+		}
+		
+		.item-thumb img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+
+		.item-info {
+			flex-grow: 1;
+		}
+
+		.item-info h5 {
+			font-size: 14px;
+			margin: 0;
+			font-weight: 600;
+		}
+
+		.item-meta {
+			font-size: 12px;
+			color: #888;
+		}
+
+		/* Alignement Prix et Quantité */
+		.item-cost-wrapper {
+			display: flex;
+			flex-direction: column;
+			justify-content: space-between;
+			align-items: flex-end;
+			text-align: right;
+			flex-shrink: 0;
+		}
+
+		.item-qty-text {
+			font-size: 12px;
+			/* Même police que item-meta */
+			color: #888;
+			line-height: 1;
+			margin-bottom: 4px;
+		}
+
+		.item-cost {
+			font-weight: 700;
+			font-size: 14px;
+			color: #333;
+		}
+
+		/* --- Coupon & Breakdown --- */
+		.coupon-field .btn-apply {
+			background: #333;
+			color: #fff;
+			border-radius: 0 8px 8px 0;
+			padding: 0 20px;
+		}
+
+		.summary-breakdown {
+			margin-top: 25px;
+			padding-top: 20px;
+			border-top: 1px dashed #ddd;
+		}
+
+		.breakdown-row {
+			margin-bottom: 10px;
+			font-size: 14px;
+			color: #666;
+		}
+
+		.breakdown-total {
+			font-size: 19px;
+			font-weight: 800;
+			color: #000;
+			margin-top: 15px;
+			padding-top: 15px;
+			border-top: 1px solid #eee;
+		}
+
+		/* --- Form Blocks --- */
+		.form-wrapper {
+			padding-right: 20px;
+		}
+
+		.form-block {
+			background: #ffffff;
+			border: 1px solid #eee;
+			border-left: 4px solid var(--primary-blue);
+			/* Bordure latérale colorée */
+			padding: 30px;
+			margin-bottom: 30px;
+			border-radius: 4px;
+			box-shadow: 0 2px 10px rgba(0, 0, 0, 0.02);
+			/* Très léger pour rester "plat" */
+		}
+
+		.block-heading {
+			display: flex;
+			align-items: center;
+			gap: 12px;
+			margin-bottom: 25px;
+		}
+
+		.block-heading h3 {
+			font-size: 18px;
+			font-weight: 700;
+			margin: 0;
+		}
+
+		.block-heading i {
+			color: var(--primary-blue);
+			font-size: 20px;
+		}
+
+		.form-label {
+			font-weight: 600;
+			font-size: 13px;
+			color: #444;
+			margin-bottom: 8px;
+		}
+
+		.form-control,
+		.form-select {
+			padding: 12px 15px;
+			border: 1px solid #e0e0e0;
+			border-radius: 8px;
+			font-size: 14px;
+		}
+
+		.form-control:focus {
+			box-shadow: none;
+			border-color: var(--primary-blue);
+		}
+
+		/* --- Payment Methods --- */
+		.pay-methods {
+			display: grid;
+			grid-template-columns: 1fr 1fr 1fr;
+			gap: 15px;
+			margin-bottom: 25px;
+		}
+
+		.pay-method {
+			cursor: pointer;
+		}
+
+		.pay-method input {
+			display: none;
+		}
+
+		.method-inner {
+			border: 2px solid #eee;
+			border-radius: 10px;
+			padding: 15px;
+			text-align: center;
+			display: block;
+			transition: 0.3s;
+		}
+
+		.pay-method input:checked+.method-inner {
+			border-color: var(--primary-blue);
+			background: #f0f7ff;
+		}
+
+		.method-inner i {
+			font-size: 24px;
+			display: block;
+			margin-bottom: 5px;
+		}
+
+		.method-inner span {
+			font-size: 12px;
+			font-weight: 600;
+		}
+
+
+		/* --- BOUTON FINAL --- */
+		.submit-order-btn {
+			background: var(--primary-blue);
+			color: #fff !important;
+			width: 100%;
+			padding: 18px 25px;
+			border-radius: 8px;
+			border: none;
+			display: flex;
+			align-items: center;
+			position: relative;
+			font-weight: 600;
+			transition: 0.3s;
+		}
+
+		.btn-text-center {
+			margin: 0 auto;
+			/* Centre le texte et l'icone */
+		}
+
+		.order-amount {
+			position: absolute;
+			right: 25px;
+			/* Prix à l'extrême droite */
+			font-weight: 700;
+			background: rgba(255, 255, 255, 0.15);
+			padding: 4px 12px;
+			border-radius: 4px;
+		}
+
+		.submit-order-btn:hover {
+			background: #0056b3;
+			transform: translateY(-2px);
+			box-shadow: 0 10px 20px rgba(13, 110, 253, 0.2);
+		}
+
+		@media (max-width: 991px) {
+			.form-wrapper {
+				padding-right: 0;
+			}
+
+			.summary-panel {
+				position: static;
+				margin-top: 30px;
+			}
+		}
+	</style>
+</head>
+
+<body>
+
+	<main class="main">
+
+		<div class="page-title">
+			<div class="breadcrumbs">
+				<nav aria-label="breadcrumb">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="index.html"><i class="bi bi-house"></i> Accueil</a></li>
+						<li class="breadcrumb-item"><a href="boutique.html">Boutique</a></li>
+						<li class="breadcrumb-item active current">Paiement de la commande</li>
+					</ol>
+				</nav>
+			</div>
+
+			<section id="checkout" class="checkout-section">
+				<div class="container" data-aos="fade-up">
+
+					<div class="progress-stepper d-flex justify-content-center mb-5">
+						<div class="step-item active">
+							<div class="step-icon"><i class="bi bi-person"></i></div>
+							<span class="step-label">Détails</span>
+						</div>
+						<div class="step-line"></div>
+						<div class="step-item">
+							<div class="step-icon"><i class="bi bi-credit-card"></i></div>
+							<span class="step-label">Paiement</span>
+						</div>
+						<div class="step-line"></div>
+						<div class="step-item">
+							<div class="step-icon"><i class="bi bi-check-circle"></i></div>
+							<span class="step-label">Confirmation</span>
+						</div>
+					</div>
+
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="summary-panel">
+								<div class="summary-top">
+									<h3><i class="bi bi-bag-check me-2"></i>Votre Panier</h3>
+									<span class="badge-count">2</span>
+								</div>
+
+								<div class="summary-items">
+									<div class="summary-item">
+										<div class="item-thumb">
+											<img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg" alt="Produit">
+										</div>
+										<div class="item-info">
+											<h5>Dashcam AI - Vision 360</h5>
+											<span class="item-meta">Modèle: Pro | Pack: Installation</span>
+										</div>
+										<div class="item-cost-wrapper">
+											<span class="item-qty-text">1 x</span>
+											<span class="item-cost">125 000</span>
+										</div>
+									</div>
+
+									<div class="summary-item">
+										<div class="item-thumb">
+											<img src="https://www.on-track.sn/wp-content/uploads/2020/11/image_driverkeys.png" alt="Produit">
+										</div>
+										<div class="item-info">
+											<h5>Traceur GPS Ultra</h5>
+											<span class="item-meta">Réseau: 4G | Autonomie: 2 ans</span>
+										</div>
+										<div class="item-cost-wrapper">
+											<span class="item-qty-text">1 x</span>
+											<span class="item-cost">45 000</span>
+										</div>
+									</div>
+								</div>
+
+								<div class="coupon-field mt-4">
+									<div class="input-group">
+										<input type="text" class="form-control" placeholder="Code Promo">
+										<button class="btn btn-dark" type="button">OK</button>
+									</div>
+								</div>
+
+								<div class="summary-breakdown">
+									<div class="breakdown-row d-flex justify-content-between">
+										<span>Sous-total</span>
+										<span>170 000 FCFA</span>
+									</div>
+									<div class="breakdown-row d-flex justify-content-between">
+										<span>Livraison</span>
+										<span>2 500 FCFA</span>
+									</div>
+									<div class="breakdown-total d-flex justify-content-between">
+										<span>Total</span>
+										<span>172 500 FCFA</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+						<div class="col-lg-8">
+							<div class="form-wrapper">
+								<form class="checkout-form">
+
+									<div class="form-block">
+										<div class="block-heading">
+											<i class="bi bi-person-circle"></i>
+											<h3>Détails Personnels</h3>
+										</div>
+										<div class="row g-3">
+											<div class="col-md-6">
+												<label class="form-label">Prénom</label>
+												<input type="text" class="form-control" placeholder="Entrez votre prénom">
+											</div>
+											<div class="col-md-6">
+												<label class="form-label">Nom</label>
+												<input type="text" class="form-control" placeholder="Entrez votre nom">
+											</div>
+											<div class="col-md-6">
+												<label class="form-label">Email</label>
+												<input type="email" class="form-control" placeholder="email@exemple.com">
+											</div>
+											<div class="col-md-6">
+												<label class="form-label">Téléphone</label>
+												<input type="tel" class="form-control" placeholder="+225 00 00 00 00">
+											</div>
+										</div>
+									</div>
+
+									<div class="form-block">
+										<div class="block-heading">
+											<i class="bi bi-geo-alt"></i>
+											<h3>Adresse de Livraison</h3>
+										</div>
+										<div class="row g-3">
+											<div class="col-md-12">
+												<label class="form-label">Adresse de rue</label>
+												<input type="text" class="form-control" placeholder="Quartier, Rue, Porte...">
+											</div>
+											<div class="col-md-6">
+												<label class="form-label">Ville</label>
+												<input type="text" class="form-control" placeholder="Abidjan">
+											</div>
+											<div class="col-md-6">
+												<label class="form-label">Pays</label>
+												<select class="form-select">
+													<option>Côte d'Ivoire</option>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="form-block">
+										<div class="block-heading">
+											<i class="bi bi-wallet2"></i>
+											<h3>Mode de Paiement</h3>
+										</div>
+										<div class="pay-methods">
+											<label class="pay-method">
+												<input type="radio" name="payment" checked>
+												<span class="method-inner">
+													<i class="bi bi-credit-card"></i>
+													<span>Carte</span>
+												</span>
+											</label>
+											<label class="pay-method">
+												<input type="radio" name="payment">
+												<span class="method-inner">
+													<i class="bi bi-paypal"></i>
+													<span>PayPal</span>
+												</span>
+											</label>
+											<label class="pay-method">
+												<input type="radio" name="payment">
+												<span class="method-inner">
+													<i class="bi bi-phone"></i>
+													<span>Mobile Money</span>
+												</span>
+											</label>
+										</div>
+									</div>
+
+									<div class="form-block">
+										<div class="block-heading">
+											<i class="bi bi-clipboard-check"></i>
+											<h3>Confirmer & Envoyer</h3>
+										</div>
+										<div class="confirm-block-inner">
+											<div class="form-check mb-4">
+												<input class="form-check-input" type="checkbox" id="terms">
+												<label class="form-check-label text-muted" for="terms">
+													J'accepte les <a href="#">Conditions d'utilisation</a> et la politique
+													de confidentialité.
+												</label>
+											</div>
+											<button type="submit" class="btn submit-order-btn">
+												<span class="btn-text-center">
+													<i class="bi bi-lock-fill me-2"></i>Finaliser la commande
+												</span>
+												<span class="order-amount">172 500 FCFA</span>
+											</button>
+										</div>
+									</div>
+
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+	</main>
+
+	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+	<script src="assets/vendor/aos/aos.js"></script>
+	<script>
+		AOS.init();
+	</script>
+</body>
+
+</html>
