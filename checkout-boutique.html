@@ -211,6 +211,10 @@
 			/* Très léger pour rester "plat" */
 		}
 
+		.form-block label{
+			display: table;
+		}
+
 		.block-heading {
 			display: flex;
 			align-items: center;
@@ -292,6 +296,17 @@
 
 
 		/* --- BOUTON FINAL --- */
+		.payment-fields {
+			display: none;
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: 1px solid #eee;
+		}
+
+		.payment-fields.active {
+			display: block;
+		}
+
 		.submit-order-btn {
 			background: var(--primary-blue);
 			color: #fff !important;
@@ -327,15 +342,91 @@
 			box-shadow: 0 10px 20px rgba(13, 110, 253, 0.2);
 		}
 
+		/* .mobile-summary-bar {
+			display: none;
+		} */
+
 		@media (max-width: 991px) {
 			.form-wrapper {
 				padding-right: 0;
 			}
 
 			.summary-panel {
-				position: static;
-				margin-top: 30px;
+				display: none;
 			}
+
+			/* .mobile-summary-bar {
+				display: block;
+				position: fixed;
+				bottom: 0;
+				left: 0;
+				right: 0;
+				background: #fff;
+				box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+				z-index: 999;
+				padding: 15px 20px;
+				border-radius: 20px 20px 0 0;
+			}
+
+			.mobile-summary-header {
+				display: flex;
+				justify-content: space-between;
+				align-items: center;
+				cursor: pointer;
+			}
+
+			.mobile-details {
+				max-height: 0;
+				overflow: hidden;
+				transition: 0.3s ease;
+			}
+
+			.mobile-details.open {
+				max-height: 300px;
+				margin-bottom: 15px;
+			} */
+		}
+
+		
+
+		/* --- MOBILE BOTTOM NAVIGATION --- */
+		@media (max-width: 991px) {
+			.summary-col { display: none; }
+			.submit-order-btn { display: none !important; } /* Masquer le bouton du formulaire en mobile */
+			
+			.mobile-summary-bar {
+				position: fixed;
+				bottom: 0; left: 0; right: 0;
+				background: #fff;
+				box-shadow: 0 -5px 25px rgba(0,0,0,0.12);
+				z-index: 1050;
+				padding: 15px 20px;
+				border-top-left-radius: 20px;
+				border-top-right-radius: 20px;
+			}
+
+			.mobile-summary-header { display: flex; justify-content: space-between; align-items: center; }
+			.mobile-total-info { cursor: pointer; }
+			.mobile-total-info span { font-size: 12px; color: #888; display: block; }
+			.mobile-total-info strong { font-size: 18px; color: #000; }
+
+			.mobile-details-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+			.mobile-details-content.open { max-height: 60vh; overflow-y: auto; padding-top: 20px; margin-bottom: 20px; }
+			
+			/* Style pour quantité mobile */
+			.mobile-qty-badge {
+				background: #f0f0f0;
+				color: #555;
+				font-size: 11px;
+				padding: 2px 6px;
+				border-radius: 4px;
+				font-weight: 600;
+				margin-right: 5px;
+			}
+		}
+
+		@media (min-width: 992px) {
+			.mobile-summary-bar { display: none; }
 		}
 	</style>
 </head>
@@ -354,7 +445,7 @@
 					</ol>
 				</nav>
 			</div>
-
+		</div>
 			<section id="checkout" class="checkout-section">
 				<div class="container" data-aos="fade-up">
 
@@ -383,40 +474,31 @@
 									<span class="badge-count">2</span>
 								</div>
 
-								<div class="summary-items">
-									<div class="summary-item">
-										<div class="item-thumb">
-											<img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg" alt="Produit">
-										</div>
-										<div class="item-info">
-											<h5>Dashcam AI - Vision 360</h5>
-											<span class="item-meta">Modèle: Pro | Pack: Installation</span>
-										</div>
-										<div class="item-cost-wrapper">
-											<span class="item-qty-text">1 x</span>
-											<span class="item-cost">125 000</span>
-										</div>
+								<div class="summary-item">
+									<div class="item-thumb">
+										<img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg">
 									</div>
-
-									<div class="summary-item">
-										<div class="item-thumb">
-											<img src="https://www.on-track.sn/wp-content/uploads/2020/11/image_driverkeys.png" alt="Produit">
-										</div>
-										<div class="item-info">
-											<h5>Traceur GPS Ultra</h5>
-											<span class="item-meta">Réseau: 4G | Autonomie: 2 ans</span>
-										</div>
-										<div class="item-cost-wrapper">
-											<span class="item-qty-text">1 x</span>
-											<span class="item-cost">45 000</span>
-										</div>
+									<div class="item-info">
+										<h5>Dashcam AI - Vision 360</h5>
+										<span class="item-meta">Modèle: Pro</span>
+									</div>
+									<div class="item-cost-wrapper">
+										<span class="item-qty-text">1 x</span>
+										<span class="item-cost">125 000</span>
 									</div>
 								</div>
 
-								<div class="coupon-field mt-4">
-									<div class="input-group">
-										<input type="text" class="form-control" placeholder="Code Promo">
-										<button class="btn btn-dark" type="button">OK</button>
+								<div class="summary-item">
+									<div class="item-thumb">
+										<img src="https://www.on-track.sn/wp-content/uploads/2020/11/image_driverkeys.png">
+									</div>
+									<div class="item-info">
+										<h5>Traceur GPS Ultra</h5>
+										<span class="item-meta">4G | 2 ans</span>
+									</div>
+									<div class="item-cost-wrapper">
+										<span class="item-qty-text">1 x</span>
+										<span class="item-cost">45 000</span>
 									</div>
 								</div>
 
@@ -495,21 +577,23 @@
 											<h3>Mode de Paiement</h3>
 										</div>
 										<div class="pay-methods">
-											<label class="pay-method">
+											<label class="pay-method" onclick="switchPayment('card')">
 												<input type="radio" name="payment" checked>
 												<span class="method-inner">
 													<i class="bi bi-credit-card"></i>
 													<span>Carte</span>
 												</span>
 											</label>
-											<label class="pay-method">
+
+											<label class="pay-method" onclick="switchPayment('card')">
 												<input type="radio" name="payment">
 												<span class="method-inner">
 													<i class="bi bi-paypal"></i>
 													<span>PayPal</span>
 												</span>
 											</label>
-											<label class="pay-method">
+
+											<label class="pay-method" onclick="switchPayment('mobile')">
 												<input type="radio" name="payment">
 												<span class="method-inner">
 													<i class="bi bi-phone"></i>
@@ -517,6 +601,30 @@
 												</span>
 											</label>
 										</div>
+
+										<div id="fields-card" class="payment-fields active">
+											<div class="row g-3">
+												<div class="col-12"><label class="form-label">Nom sur la carte</label><input type="text" class="form-control" placeholder="Ex: Jean Kouassi">
+												</div>
+												<div class="col-12"><label class="form-label">Numéro de carte</label><input type="text" class="form-control" placeholder="4242 4242 4242 4242"></div>
+												<div class="col-md-6"><label class="form-label">Expiration</label><input type="text" class="form-control" placeholder="MM/AA"></div>
+												<div class="col-md-6"><label class="form-label">Code CVC</label><input type="text" class="form-control" placeholder="CVC"></div>
+											</div>
+										</div>
+
+										<div id="fields-mobile" class="payment-fields">
+											<div class="row g-3">
+												<div class="col-12">
+													<label class="form-label">Numéro de Telephone</label>
+													<div class="input-group">
+														<span class="input-group-text bg-white border-end-0 text-muted">+225</span>
+														<input type="tel" class="form-control border-start-0" placeholder="07 00 00 00 00">
+													</div>
+													<!-- <input type="tel" class="form-control" placeholder="Numéro Mobile Money"> -->
+												</div>
+											</div>
+										</div>
+
 									</div>
 
 									<div class="form-block">
@@ -524,7 +632,7 @@
 											<i class="bi bi-clipboard-check"></i>
 											<h3>Confirmer & Envoyer</h3>
 										</div>
-										<div class="confirm-block-inner">
+
 											<div class="form-check mb-4">
 												<input class="form-check-input" type="checkbox" id="terms">
 												<label class="form-check-label text-muted" for="terms">
@@ -549,10 +657,64 @@
 			</section>
 	</main>
 
+	<div class="mobile-summary-bar">
+		<div class="mobile-details-content" id="mobileDetails">
+			<div class="px-2">
+				<h6 class="mb-3 text-uppercase fw-bold" style="font-size: 12px; color: #999;">Détail de la commande</h6>
+				<div class="summary-item">
+					<div class="item-thumb"><img src="https://m.media-amazon.com/images/I/71zW-PdG0oL._AC_SL1500_.jpg"></div>
+					<div class="item-info">
+						<h5>Dashcam AI</h5>
+						<span class="item-meta"><span class="mobile-qty-badge">1x</span> 125 000 FCFA</span>
+					</div>
+				</div>
+				<div class="summary-item">
+					<div class="item-thumb"><img src="https://www.on-track.sn/wp-content/uploads/2020/11/image_driverkeys.png"></div>
+					<div class="item-info">
+						<h5>Traceur GPS</h5>
+						<span class="item-meta"><span class="mobile-qty-badge">1x</span> 45 000 FCFA</span>
+					</div>
+				</div>
+				<hr style="border-style: dashed;">
+			</div>
+		</div>
+		<div class="mobile-summary-header">
+			<div class="mobile-total-info" onclick="toggleMobileDetails()">
+				<span>Total à payer <i class="bi bi-chevron-up ms-1"></i></span>
+				<strong>170 000 FCFA</strong>
+			</div>
+			<button type="button" class="btn btn-primary px-4 py-2" style="border-radius: 8px; font-weight: 700; background: var(--primary-blue);" onclick="document.getElementById('mainCheckoutForm').submit();">Payer</button>
+		</div>
+	</div>
+
+
 	<script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<script src="assets/vendor/aos/aos.js"></script>
 	<script>
 		AOS.init();
+
+		function switchPayment(type) {
+			document.querySelectorAll('.payment-fields').forEach(el => {
+				el.classList.remove('active');
+			});
+
+			if (type === 'card') {
+				document.getElementById('fields-card').classList.add('active');
+			} else {
+				document.getElementById('fields-mobile').classList.add('active');
+			}
+		}
+
+		function toggleMobileDetails() {
+			const content = document.getElementById('mobileDetails');
+			content.classList.toggle('open');
+			const icon = document.querySelector('.mobile-total-info i');
+			if(content.classList.contains('open')) {
+				icon.classList.replace('bi-chevron-up', 'bi-chevron-down');
+			} else {
+				icon.classList.replace('bi-chevron-down', 'bi-chevron-up');
+			}
+		}
 	</script>
 </body>
 
