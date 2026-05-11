@@ -13,7 +13,7 @@
             --text-gray: #6c757d;
             --text-light-gray: #a0aec0;
             --border-color: #e2e8f0;
-            --bg-body: #f8f9fa; /* Fond très légèrement grisé/bleuté de l'image */
+            --bg-body: #f8f9fa; /* Ton fond légèrement grisé */
             --bg-card: white;
         }
 
@@ -134,7 +134,7 @@
             border-color: var(--primary-color);
         }
 
-        /* --- Options (Remember me & Forgot password) --- */
+        /* --- Options (Se souvenir de moi & Mot de passe oublié) --- */
         .form-options {
             display: flex;
             justify-content: space-between;
@@ -164,7 +164,7 @@
             font-weight: 600;
         }
 
-        /* --- Bouton Principal (Sign In) --- */
+        /* --- Bouton Principal (Se connecter) --- */
         .btn-submit {
             width: 100%;
             background-color: var(--primary-color);
@@ -186,7 +186,7 @@
             background-color: #004494;
         }
 
-        /* --- Séparateur "OR" --- */
+        /* --- Séparateur "OU" --- */
         .separator {
             display: flex;
             align-items: center;
@@ -230,9 +230,9 @@
         }
 
         .btn-google i {
-            color: black; /* Couleur officielle Google */
+            color: black;
             font-size: 16px;
-						font-weight: 600;
+            font-weight: 600;
         }
 
         /* --- Footer de la carte (Créer un compte) --- */
@@ -257,49 +257,49 @@
 <body>
 
     <header class="page-header">
-        <h1>Login</h1>
+        <h1>Connexion</h1>
         <div class="breadcrumb">
-            <a href="#">Home</a> / Login
+            <a href="#">Accueil</a> / Connexion
         </div>
     </header>
 
     <main class="login-wrapper">
         <div class="login-card">
-            <h2>Welcome Back</h2>
-            <p class="subtitle">Sign in to your account</p>
+            <h2>Ravi de vous revoir</h2>
+            <p class="subtitle">Connectez-vous à votre compte</p>
 
             <form>
                 <div class="form-group">
                     <i class="fa-regular fa-envelope input-icon"></i>
-                    <input type="email" placeholder="Email address" required>
+                    <input type="email" placeholder="Adresse e-mail" required>
                 </div>
 
                 <div class="form-group">
                     <i class="fa-solid fa-lock input-icon"></i>
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" placeholder="Mot de passe" required>
                     <i class="fa-regular fa-eye toggle-password"></i>
                 </div>
 
                 <div class="form-options">
                     <label class="remember-me">
-                        <input type="checkbox"> Remember me
+                        <input type="checkbox"> Se souvenir de moi
                     </label>
-                    <a href="#" class="forgot-password">Forgot password?</a>
+                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
                 </div>
 
                 <button type="submit" class="btn-submit">
-                    Sign In <i class="fa-solid fa-arrow-right-long"></i>
+                    Se connecter <i class="fa-solid fa-arrow-right-long"></i>
                 </button>
             </form>
 
-            <div class="separator">OR</div>
+            <div class="separator">OU</div>
 
             <button class="btn-google">
-                <i class="fa-brands fa-google"></i> Continue with Google
+                <i class="fa-brands fa-google"></i> Continuer avec Google
             </button>
 
             <div class="card-footer">
-                Don't have an account? <a href="#">Create account</a>
+                Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
             </div>
         </div>
     </main>
