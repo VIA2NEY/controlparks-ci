@@ -1,308 +1,123 @@
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Connexion - GPS Fleet</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* Réinitialisation et variables globales */
-        :root {
-            --primary-color: #0559b7; /* Le bleu dynamique de ton bouton */
-            --text-dark: #1a1a1a;
-            --text-gray: #6c757d;
-            --text-light-gray: #a0aec0;
-            --border-color: #e2e8f0;
-            --bg-body: #f8f9fa; /* Ton fond légèrement grisé */
-            --bg-card: white;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Connexion - GPS Fleet</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+		<style>
+			:root{--primary-color:#0559b7;--text-dark:#1a1a1a;--text-gray:#6c757d;--text-light-gray:#a0aec0;--border-color:#e2e8f0;--bg-body:#f8f9fa;--bg-card:white;}
+			*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',system-ui,-apple-system,sans-serif;}
+			body{background-color:var(--bg-body);color:var(--text-dark);min-height:100vh;display:flex;flex-direction:column;}
+			
+			/* --- Style du Header / Fil d'ariane de la maquette --- */
+			.page-header{width:100%;background-color:#f8fafc;padding:20px 80px;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid var(--border-color);}
+			.page-header h1{font-size:24px;font-weight:700;}
+			.breadcrumb{font-size:14px;color:var(--text-gray);}
+			.breadcrumb a{text-decoration:none;color:var(--primary-color);}
+			
+			/* --- Conteneur Principal --- */
+			.login-wrapper{flex:1;display:flex;justify-content:center;align-items:center;padding:40px 20px;}
+			
+			/* --- La Carte Blanche --- */
+			.login-card{background:var(--bg-card);width:100%;max-width:480px;padding:45px 40px;border-radius:16px;box-shadow:0 10px 25px rgba(0,0,0,0.03);text-align:center;}
+			.login-card h2{font-size:28px;font-weight:700;margin-bottom:8px;}
+			.login-card .subtitle{color:var(--text-gray);font-size:15px;margin-bottom:35px;}
+			
+			/* --- Groupes de Formulaire & Inputs --- */
+			.form-group{position:relative;margin-bottom:20px;text-align:left;}
+			.form-group i.input-icon{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-light-gray);font-size:16px;}
+			.form-group i.toggle-password{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-light-gray);cursor:pointer;font-size:16px;}
+			.form-group input{width:100%;padding:14px 16px 14px 45px;border:1px solid var(--border-color);border-radius:8px;font-size:15px;outline:none;transition:border-color 0.2s;}
+			.form-group input::placeholder{color:var(--text-light-gray);}
+			.form-group input:focus{border-color:var(--primary-color);}
+			
+			/* --- Options (Se souvenir de moi & Mot de passe oublié) --- */
+			.form-options{display:flex;justify-content:space-between;align-items:center;font-size:14px;margin-bottom:25px;}
+			.remember-me{display:flex;align-items:center;gap:8px;color:#4a5568;cursor:pointer;}
+			.remember-me input{cursor:pointer;width:16px;height:16px;accent-color:var(--primary-color);}
+			.forgot-password{color:var(--primary-color);text-decoration:none;font-weight:600;}
+			
+			/* --- Bouton Principal (Se connecter) --- */
+			.btn-submit{width:100%;background-color:var(--primary-color);color:white;border:none;padding:14px;border-radius:8px;font-size:16px;font-weight:600;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:8px;transition:background-color 0.2s;}
+			.btn-submit:hover{background-color:#004494;}
+			
+			/* --- Séparateur "OU" --- */
+			.separator{display:flex;align-items:center;text-align:center;color:var(--text-light-gray);font-size:12px;font-weight:600;margin:30px 0;}
+			.separator::before,.separator::after{content:'';flex:1;border-bottom:1px solid var(--border-color);}
+			.separator:not(:empty)::before{margin-right:.5em;}
+			.separator:not(:empty)::after{margin-left:.5em;}
+			
+			/* --- Bouton Google --- */
+			.btn-google{width:100%;background-color:transparent;color:#2d3748;border:1px solid var(--border-color);padding:14px;border-radius:8px;font-size:15px;font-weight:600;cursor:pointer;display:flex;justify-content:center;align-items:center;gap:10px;transition:background-color 0.2s;margin-bottom:30px;}
+			.btn-google:hover{background-color:#f7fafc;}
+			.btn-google i{color:black;font-size:16px;font-weight:600;}
+			
+			/* --- Footer de la carte (Créer un compte) --- */
+			.card-footer{font-size:14px;color:var(--text-gray);}
+			.card-footer a{color:var(--primary-color);text-decoration:none;font-weight:600;}
+			
+			/* Responsive basique pour mobile */
+			@media (max-width:600px){
+			.page-header{padding:20px;}
+			.login-card{padding:30px 20px;}
+			}
+		</style>
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
-        }
-
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-dark);
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-        }
-
-        /* --- Style du Header / Fil d'ariane de la maquette --- */
-        .page-header {
-            width: 100%;
-            background-color: #f8fafc;
-            padding: 20px 80px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .page-header h1 {
-            font-size: 24px;
-            font-weight: 700;
-        }
-
-        .breadcrumb {
-            font-size: 14px;
-            color: var(--text-gray);
-        }
-
-        .breadcrumb a {
-            text-decoration: none;
-            color: var(--primary-color);
-        }
-
-        /* --- Conteneur Principal --- */
-        .login-wrapper {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 40px 20px;
-        }
-
-        /* --- La Carte Blanche --- */
-        .login-card {
-            background: var(--bg-card);
-            width: 100%;
-            max-width: 480px;
-            padding: 45px 40px;
-            border-radius: 16px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.03); /* Ombre très subtile */
-            text-align: center;
-        }
-
-        .login-card h2 {
-            font-size: 28px;
-            font-weight: 700;
-            margin-bottom: 8px;
-        }
-
-        .login-card .subtitle {
-            color: var(--text-gray);
-            font-size: 15px;
-            margin-bottom: 35px;
-        }
-
-        /* --- Groupes de Formulaire & Inputs --- */
-        .form-group {
-            position: relative;
-            margin-bottom: 20px;
-            text-align: left;
-        }
-
-        .form-group i.input-icon {
-            position: absolute;
-            left: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-light-gray);
-            font-size: 16px;
-        }
-
-        .form-group i.toggle-password {
-            position: absolute;
-            right: 16px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-light-gray);
-            cursor: pointer;
-            font-size: 16px;
-        }
-
-        .form-group input {
-            width: 100%;
-            padding: 14px 16px 14px 45px; /* Espace à gauche pour l'icône */
-            border: 1px solid var(--border-color);
-            border-radius: 8px;
-            font-size: 15px;
-            outline: none;
-            transition: border-color 0.2s;
-        }
-
-        .form-group input::placeholder {
-            color: var(--text-light-gray);
-        }
-
-        .form-group input:focus {
-            border-color: var(--primary-color);
-        }
-
-        /* --- Options (Se souvenir de moi & Mot de passe oublié) --- */
-        .form-options {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 14px;
-            margin-bottom: 25px;
-        }
-
-        .remember-me {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #4a5568;
-            cursor: pointer;
-        }
-
-        .remember-me input {
-            cursor: pointer;
-            width: 16px;
-            height: 16px;
-            accent-color: var(--primary-color);
-        }
-
-        .forgot-password {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* --- Bouton Principal (Se connecter) --- */
-        .btn-submit {
-            width: 100%;
-            background-color: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            transition: background-color 0.2s;
-        }
-
-        .btn-submit:hover {
-            background-color: #004494;
-        }
-
-        /* --- Séparateur "OU" --- */
-        .separator {
-            display: flex;
-            align-items: center;
-            text-align: center;
-            color: var(--text-light-gray);
-            font-size: 12px;
-            font-weight: 600;
-            margin: 30px 0;
-        }
-
-        .separator::before, .separator::after {
-            content: '';
-            flex: 1;
-            border-bottom: 1px solid var(--border-color);
-        }
-
-        .separator:not(:empty)::before { margin-right: .5em; }
-        .separator:not(:empty)::after { margin-left: .5em; }
-
-        /* --- Bouton Google --- */
-        .btn-google {
-            width: 100%;
-            background-color: transparent;
-            color: #2d3748;
-            border: 1px solid var(--border-color);
-            padding: 14px;
-            border-radius: 8px;
-            font-size: 15px;
-            font-weight: 600;
-            cursor: pointer;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 10px;
-            transition: background-color 0.2s;
-            margin-bottom: 30px;
-        }
-
-        .btn-google:hover {
-            background-color: #f7fafc;
-        }
-
-        .btn-google i {
-            color: black;
-            font-size: 16px;
-            font-weight: 600;
-        }
-
-        /* --- Footer de la carte (Créer un compte) --- */
-        .card-footer {
-            font-size: 14px;
-            color: var(--text-gray);
-        }
-
-        .card-footer a {
-            color: var(--primary-color);
-            text-decoration: none;
-            font-weight: 600;
-        }
-
-        /* Responsive basique pour mobile */
-        @media (max-width: 600px) {
-            .page-header { padding: 20px; }
-            .login-card { padding: 30px 20px; }
-        }
-    </style>
 </head>
+
 <body>
 
-    <header class="page-header">
-        <h1>Connexion</h1>
-        <div class="breadcrumb">
-            <a href="#">Accueil</a> / Connexion
-        </div>
-    </header>
+	<header class="page-header">
+		<h1>Connexion</h1>
+		<div class="breadcrumb">
+			<a href="#">Accueil</a> / Connexion
+		</div>
+	</header>
 
-    <main class="login-wrapper">
-        <div class="login-card">
-            <h2>Ravi de vous revoir</h2>
-            <p class="subtitle">Connectez-vous à votre compte</p>
+	<main class="login-wrapper">
+		<div class="login-card">
+			<h2>Ravi de vous revoir</h2>
+			<p class="subtitle">Connectez-vous à votre compte</p>
 
-            <form>
-                <div class="form-group">
-                    <i class="fa-regular fa-envelope input-icon"></i>
-                    <input type="email" placeholder="Adresse e-mail" required>
-                </div>
+			<form>
+				<div class="form-group">
+					<i class="fa-regular fa-envelope input-icon"></i>
+					<input type="email" placeholder="Adresse e-mail" required>
+				</div>
 
-                <div class="form-group">
-                    <i class="fa-solid fa-lock input-icon"></i>
-                    <input type="password" placeholder="Mot de passe" required>
-                    <i class="fa-regular fa-eye toggle-password"></i>
-                </div>
+				<div class="form-group">
+					<i class="fa-solid fa-lock input-icon"></i>
+					<input type="password" placeholder="Mot de passe" required>
+					<i class="fa-regular fa-eye toggle-password"></i>
+				</div>
 
-                <div class="form-options">
-                    <label class="remember-me">
-                        <input type="checkbox"> Se souvenir de moi
-                    </label>
-                    <a href="#" class="forgot-password">Mot de passe oublié ?</a>
-                </div>
+				<div class="form-options">
+					<label class="remember-me">
+						<input type="checkbox"> Se souvenir de moi
+					</label>
+					<a href="#" class="forgot-password">Mot de passe oublié ?</a>
+				</div>
 
-                <button type="submit" class="btn-submit">
-                    Se connecter <i class="fa-solid fa-arrow-right-long"></i>
-                </button>
-            </form>
+				<button type="submit" class="btn-submit">
+					Se connecter <i class="fa-solid fa-arrow-right-long"></i>
+				</button>
+			</form>
 
-            <div class="separator">OU</div>
+			<div class="separator">OU</div>
 
-            <button class="btn-google">
-                <i class="fa-brands fa-google"></i> Continuer avec Google
-            </button>
+			<button class="btn-google">
+				<i class="fa-brands fa-google"></i> Continuer avec Google
+			</button>
 
-            <div class="card-footer">
-                Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
-            </div>
-        </div>
-    </main>
+			<div class="card-footer">
+				Vous n'avez pas de compte ? <a href="#">Créer un compte</a>
+			</div>
+		</div>
+	</main>
 
 </body>
+
 </html>
