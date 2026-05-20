@@ -849,68 +849,71 @@
 
 <body class="index-page">
 
-<div class="top-actions">
-  <a href="https://wa.me/225XXXXXXXX" target="_blank" class="btn-whatsapp">
-    <i class="fa-brands fa-whatsapp"></i> WhatsApp
-  </a>
 
-  {% if not user.is_authenticated %}
-  
-    <div class="account-dropdown-wrapper">
-      <button class="btn-login" onclick="toggleDropdown('dropdown-guest')">
-        <i class="fa-regular fa-user"></i> Connexion
-      </button>
-      
-      <div id="dropdown-guest" class="user-dropdown-menu">
-        <div class="dropdown-welcome">
-          <h4>Bienvenue !</h4>
-          <p>Connectez-vous pour une meilleure expérience.</p>
-        </div>
-        <div class="dropdown-buttons">
-          <a href="login.html" class="btn-dropdown-primary">Se connecter</a>
-          <a href="register.html" class="btn-dropdown-secondary">Créer un compte</a>
-        </div>
-        <hr class="dropdown-divider">
-        <ul class="dropdown-links">
-          <li><a href="#"><i class="fa-solid fa-box"></i> Mes commandes</a></li>
-          <li><a href="#"><i class="fa-solid fa-headset"></i> Centre d'aide</a></li>
-        </ul>
-      </div>
+  <div class="container-fluid container-xl d-flex align-items-center justify-content-between">
+    <div class="top-info">
+      <!-- <i class="fa-solid fa-phone"></i> (+225) XX XX XX XX -->
     </div>
+    <div class="top-actions">
+      <!-- <a href="https://wa.me/225XXXXXXXX" target="_blank" class="btn-whatsapp">
+        <i class="fa-brands fa-whatsapp"></i> WhatsApp
+      </a> -->
 
-  {% else %}
+      <div class="account-dropdown-wrapper">
+        <button class="btn-login" onclick="toggleDropdown('dropdown-guest')">
+          <i class="bi bi-person"></i> Connexion
+        </button>
 
-    <div class="account-dropdown-wrapper">
-      <button class="btn-user-profile" onclick="toggleDropdown('dropdown-user')">
-        <img src="{{ user.profile.avatar.url|default:'assets/img/default-avatar.png' }}" alt="Avatar" class="user-avatar-mini">
-        <span class="user-name-text">{{ user.first_name }} {{ user.last_name }}</span>
-        <i class="fa-solid fa-chevron-down arrow-icon"></i>
-      </button>
-      
-      <div id="dropdown-user" class="user-dropdown-menu user-connected-menu">
-        <div class="dropdown-user-header">
-          <img src="{{ user.profile.avatar.url|default:'assets/img/default-avatar.png' }}" alt="Avatar" class="user-avatar-large">
-          <div class="user-info-detail">
-            <h4>{{ user.first_name }} {{ user.last_name }}</h4>
-            <p>{{ user.email }}</p>
+        <div id="dropdown-guest" class="user-dropdown-menu">
+          <div class="dropdown-welcome">
+            <h4>Bienvenue !</h4>
+            <p>Connectez-vous pour une meilleure expérience.</p>
           </div>
+          <div class="dropdown-buttons">
+            <a href="login.html" class="btn-dropdown-primary">Se connecter</a>
+            <a href="register.html" class="btn-dropdown-secondary">Créer un compte</a>
+          </div>
+          <hr class="dropdown-divider">
+          <ul class="dropdown-links">
+            <li><a href="#"><i class="fa-solid fa-box"></i> Mes commandes</a></li>
+            <li><a href="#"><i class="fa-solid fa-headset"></i> Centre d'aide</a></li>
+          </ul>
         </div>
-        <hr class="dropdown-divider">
-        <ul class="dropdown-links">
-          <li><a href="dashboard.html"><i class="fa-regular fa-id-card"></i> Mon Profil</a></li>
-          <li><a href="#"><i class="fa-regular fa-envelope"></i> Messages <span class="badge-count">2</span></a></li>
-          <li><a href="appointments.html"><i class="fa-regular fa-calendar-check"></i> Mes Rendez-vous</a></li>
-          <hr class="dropdown-divider">
-          <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Paramètres</a></li>
-          <li><a href="docs.html"><i class="fa-regular fa-file-lines"></i> Mes Documents</a></li>
-          <hr class="dropdown-divider">
-          <li><a href="logout.html" class="logout-link"><i class="fa-solid fa-arrow-right-from-bracket"></i> Se déconnecter</a></li>
-        </ul>
       </div>
-    </div>
 
-  {% endif %}
-</div>
+      <!-- <div class="account-dropdown-wrapper">
+        <button class="btn-user-profile" onclick="toggleDropdown('dropdown-user')">
+          <img src="https://placehold.net/avatar.svg" alt="Avatar" class="user-avatar-mini">
+          <span class="user-name-text">John Doe</span>
+          <i class="fa-solid fa-chevron-down arrow-icon"></i>
+        </button>
+
+        <div id="dropdown-user" class="user-dropdown-menu user-connected-menu">
+          <div class="dropdown-user-header">
+            <img src="https://placehold.net/avatar.svg" alt="Avatar" class="user-avatar-large">
+            <div class="user-info-detail">
+              <h4>John Doe</h4>
+              <p>JohnDoe@email.com</p>
+            </div>
+          </div>
+          <hr class="dropdown-divider">
+          <ul class="dropdown-links">
+            <li><a href="dashboard.html"><i class="fa-regular fa-id-card"></i> Mon Profil</a></li>
+            <li><a href="#"><i class="fa-regular fa-envelope"></i> Messages <span class="badge-count">2</span></a></li>
+            <li><a href="appointments.html"><i class="fa-regular fa-calendar-check"></i> Mes Rendez-vous</a></li>
+            <hr class="dropdown-divider">
+            <li><a href="settings.html"><i class="fa-solid fa-gear"></i> Paramètres</a></li>
+            <li><a href="docs.html"><i class="fa-regular fa-file-lines"></i> Mes Documents</a></li>
+            <hr class="dropdown-divider">
+            <li><a href="logout.html" class="logout-link"><i class="fa-solid fa-arrow-right-from-bracket"></i> Se
+                déconnecter</a></li>
+          </ul>
+        </div>
+      </div> -->
+
+
+    </div>
+  </div>
 
 
   <header id="header" class="header d-flex align-items-center fixed-top">
